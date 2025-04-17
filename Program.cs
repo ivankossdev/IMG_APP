@@ -8,20 +8,26 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Start app");
-        string path = "/home/ivan/developer/DotnetCore/IMG_APP/3c.bmp";
-        Console.WriteLine(path);
-        using (FileStream fstream = File.OpenRead(path))
-        {
-            byte[] buffer = new byte[fstream.Length];
+        string path = $"{Directory.GetCurrentDirectory()}/3c.bmp";
 
-            fstream.Read(buffer, 0, buffer.Length);
-            Console.WriteLine($"Len file {buffer.Length} byte. ");
-            GetHader(buffer);
-            System.Console.WriteLine();
-            for (int i = 14; i < 0x18; i++)
+        Console.WriteLine(path);
+        try{
+            using (FileStream fstream = File.OpenRead(path))
             {
-                Console.WriteLine($"[{i}] {buffer[i]}");
+                byte[] buffer = new byte[fstream.Length];
+
+                fstream.Read(buffer, 0, buffer.Length);
+                Console.WriteLine($"Len file {buffer.Length} byte. ");
+                GetHader(buffer);
+                Console.WriteLine();
+                for (int i = 14; i < 0x18; i++)
+                {
+                    Console.WriteLine($"[{i}] {buffer[i]}");
+                }
             }
+        }
+        catch (FileNotFoundException){
+            Console.WriteLine("File not found");
         }
     }
 
