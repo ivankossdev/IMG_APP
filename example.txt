@@ -1,0 +1,14 @@
+b'BM'#ID field (42h, 4Dh)
+b'\x9a\x00\x00\x00'#154 bytes (122+32) Size of the BMP file
+b'\x00\x00'#Unused
+b'\x00\x00'#Unused
+b'z\x00\x00\x00'#122 bytes (14+108) Offset where the pixel array (bitmap data) can be found
+b'l\x00\x00\x00'#108 bytes Number of bytes in the DIB header (from this point)
+b'\x04\x00\x00\x00'#4 pixels (left to right order) Width of the bitmap in pixels
+b'\x02\x00\x00\x00'#2 pixels (bottom to top order) Height of the bitmap in pixels
+b'\x01\x00'#1 plane Number of color planes being used
+b' \x00'#32 bits Number of bits per pixel
+b'\x03\x00\x00\x00'#3 BI_BITFIELDS, no pixel array compression used
+b' \x00\x00\x00'#32 bytes Size of the raw bitmap data (including padding)
+b'\x13\x0b\x00\x00'#2835 pixels/metre horizontal Print resolution of the image,
+b'\x13\x0b\x00\x00'#2835 pixels/metre vertical   72 DPI × 39.3701 inches per metre yields 2834.6472
