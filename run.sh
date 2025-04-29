@@ -1,12 +1,9 @@
 #!/bin/bash
 
 clear
-if [[ "app" == "$1" ]]
+if [[ "py" == "$1" ]]
     then
-        echo start programm in Debug folder "$1"
-        path=`pwd`
-        $path/bin/Debug/net8.0/app_1 
+        python3 bmp.py
     else
-        echo "Buid app_1"
         dotnet run app
 fi
