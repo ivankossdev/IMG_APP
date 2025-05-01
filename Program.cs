@@ -8,7 +8,7 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Start app");
-        string path = $"{Directory.GetCurrentDirectory()}/3c.bmp";
+        string path = $"{Directory.GetCurrentDirectory()}/test.bmp";
 
         Console.WriteLine(path);
         try{
