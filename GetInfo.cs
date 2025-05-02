@@ -1,5 +1,3 @@
-using System.Text;
-
 namespace img_app;
 
 public class GetInfo(string fileName){
