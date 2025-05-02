@@ -5,10 +5,14 @@ class ImagePBM(string fileName){
     public string Name { get; } = $"{fileName}.pbm";
     public string Path() => $"{Directory.GetCurrentDirectory()}/{Name}";
 
-    public void Create(int height, int width, string str){
+    public void Create(int width, int height){
         StringBuilder sb = new ("P1\n");
-        sb.Append($"{height} {width}\n");
-        sb.Append(str);
+        sb.Append($"{width} {height}\n");
+
+        for(int i = 0; i < height; i++){
+            sb.Append($"{RandValue(width)}\n");
+        }
+
         Write(sb.ToString());
     }
 
@@ -23,5 +27,16 @@ class ImagePBM(string fileName){
         {
             Console.WriteLine(ex.ToString());
         }
+    }
+
+    private string RandValue(int count){
+        Random rnd = new();
+        StringBuilder randString = new();
+
+        for(int i = 0; i < count; i++){
+            randString.Append($"{rnd.Next(0, 2)} ");
+        }
+
+        return randString.ToString();
     }
 }

@@ -5,9 +5,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        ImagePBM imagePBM = new ImagePBM("1");
-        Console.WriteLine(imagePBM.Path());
+        ImagePBM imagePBM = new("image_640x480");
         Console.WriteLine(imagePBM.Name);
-        imagePBM.Create(4, 4, "1111\n1001\n1111\n1001");
+        imagePBM.Create(640, 480);
     }
 }
