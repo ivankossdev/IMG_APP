@@ -13,5 +13,7 @@ class Program
             bw_PBM.Name = $"image_bw_1024x768_{i}";
             bw_PBM.CreateRandomFile(1024, 768);
         }
+
+        // ImageP5_PGM.Read();
     }
 }
