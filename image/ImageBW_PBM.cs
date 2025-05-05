@@ -3,6 +3,10 @@ namespace img_app;
 
 class ImageBW_PBM(string fileName) : Image(fileName){
 
+    private readonly string _name = fileName + ".pbm";
+
+    public new string Name => _name;
+
     public void Create(int width, int height){
         StringBuilder sb = new ("P1\n");
         sb.Append($"{width} {height}\n");
@@ -11,7 +15,7 @@ class ImageBW_PBM(string fileName) : Image(fileName){
             sb.Append($"{RandValue(width)}\n");
         }
 
-        Write(sb.ToString());
+        Write(sb.ToString(), Name);
     }
 
     private string RandValue(int count){
