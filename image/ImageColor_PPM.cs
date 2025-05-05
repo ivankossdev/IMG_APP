@@ -20,7 +20,6 @@ class ImageColor_PPM(string fileName) : Image(fileName)
             if (count < 32)
             { 
                 count++;
-                
             }
             else
             {
