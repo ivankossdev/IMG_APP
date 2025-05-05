@@ -5,8 +5,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        ImageBW_PBM bw_PBM = new();
-        ImageColor_PPM color_PPM = new();
+        ImageP1_PBM bw_PBM = new();
+        ImageP3_PPM color_PPM = new();
         for(int i = 0; i < 2; i++){
             color_PPM.Name = $"image_color_1024x768_{i}";
             color_PPM.CreateRandomFile(1024, 768);
