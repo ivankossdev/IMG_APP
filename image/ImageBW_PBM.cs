@@ -1,11 +1,14 @@
 using System.Text;
 namespace img_app;
 
-class ImageBW_PBM(string fileName) : Image(fileName){
+class ImageBW_PBM : Image{
 
-    private readonly string _name = fileName + ".pbm";
+    private string _name = "image.pbm";
 
-    public new string Name => _name;
+    public new string Name {
+        get => _name;
+        set => _name = value + ".pbm";
+    }
 
     public void CreateRandomFile(int width, int height){
         StringBuilder sb = new ("P1\n");

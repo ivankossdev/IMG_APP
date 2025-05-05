@@ -1,14 +1,17 @@
 using System.Text;
 namespace img_app;
 
-public class Image(string fileName)
+public class Image
 {
-    private readonly string _name = fileName;
-    public string Name => _name;
+    private string _name = "image";
+    public string Name {
+        get => _name;
+        set => _name = value;
+    }
 
     public string Path(string name)
     {
-        return $"{Directory.GetCurrentDirectory()}/{name}";
+        return $"{Directory.GetCurrentDirectory()}/example/{name}";
     }
 
     protected void Write(string data, string name)

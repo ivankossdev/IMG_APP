@@ -1,11 +1,15 @@
 using System.Text;
 namespace img_app;
 
-class ImageColor_PPM(string fileName) : Image(fileName)
+class ImageColor_PPM : Image
 {
-    private readonly string _name = fileName + ".ppm";
+    private string _name = "image.ppm";
 
-    public new string Name => _name;
+    public new string Name {
+        get => _name;
+        set => _name = value + ".ppm";
+    }
+
     public void CreateRandomFile(int width, int height)
     {
         Random rnd = new();
