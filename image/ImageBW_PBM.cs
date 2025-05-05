@@ -7,7 +7,7 @@ class ImageBW_PBM(string fileName) : Image(fileName){
 
     public new string Name => _name;
 
-    public void Create(int width, int height){
+    public void CreateRandomFile(int width, int height){
         StringBuilder sb = new ("P1\n");
         sb.Append($"{width} {height}\n");
 
