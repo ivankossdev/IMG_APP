@@ -17,7 +17,7 @@ class ImageColor_PPM(string fileName) : Image(fileName)
 
         for (int y = 0; y < height; y++)
         {
-            if (count < 32)
+            if (count < height / 10)
             { 
                 count++;
             }
