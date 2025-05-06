@@ -3,6 +3,7 @@ namespace img_app;
 
 class ImageP3_PPM : Image
 {
+    readonly RGB_Pixel pixel = new();
     private string _name = "image.ppm";
 
     public new string Name {
@@ -12,10 +13,9 @@ class ImageP3_PPM : Image
 
     public void CreateRandomFile(int width, int height)
     {
-        Random rnd = new();
         StringBuilder sb = new("P3\n");
         sb.Append($"{width} {height}\n255\n");
-        string color = $"127 127 127 ";
+        string color = $"{pixel.RedPixel(50, 100)} {pixel.GreenPixel(50)} {pixel.BluePixel(25)} ";
 
         int count = 0;
 
@@ -27,7 +27,7 @@ class ImageP3_PPM : Image
             }
             else
             {
-                color = $"{rnd.Next(0, 255)} {rnd.Next(0, 255)} {rnd.Next(0, 255)} ";
+                color = $"{pixel.RedPixel(50, 100)} {pixel.GreenPixel(50)} {pixel.BluePixel(25)} ";
                 count = 0;
             }
 
