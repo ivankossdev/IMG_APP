@@ -4,7 +4,8 @@ namespace img_app;
 public class Image
 {
     private string _name = "image";
-    public string Name {
+    public string Name
+    {
         get => _name;
         set => _name = value;
     }

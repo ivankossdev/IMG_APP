@@ -11,6 +11,37 @@ class ImageP5_PGM : Image
         get => _name;
         set => _name = value + ".pgm";
     }
+
+    public void CreateRandomFile(int width, int height)
+    {
+        StringBuilder sb = new("P5\n");
+        int len = width * height;
+        byte[] pixelArray = new byte[len];
+
+        sb.Append($"{width} {height}\n255\n");
+        Write(sb.ToString(), Name);
+
+        byte[] byteArray = new UTF8Encoding(true).GetBytes(sb.ToString());
+
+        pixel.NextBytes(pixelArray);
+
+        using (FileStream fs = new FileStream(Name, FileMode.CreateNew))
+        {
+            using (BinaryWriter w = new BinaryWriter(fs))
+            {
+                foreach (byte bt in byteArray)
+                {
+                    w.Write(bt);
+                }
+
+                foreach (byte bt in pixelArray)
+                {
+                    w.Write(bt);
+                }
+            }
+        }
+    }
+
     public static void Read()
     {
         StringBuilder sb = new();
