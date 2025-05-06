@@ -4,7 +4,7 @@ namespace img_app;
 class ImageP5_PGM : Image
 {
     RGB_Pixel pixel = new();
-    private string _name = "image.ppm";
+    private string _name = "image.pgm";
 
     public new string Name
     {

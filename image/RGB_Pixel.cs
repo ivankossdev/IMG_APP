@@ -13,18 +13,7 @@ class RGB_Pixel : Random
         return Next(start, stop);
     }
 
-    public int RedPixel(int start = 0, int stop = 255)
-    {
-        return Generate(start, stop);
-    }
-
-    public int GreenPixel(int start = 0, int stop = 255)
-    {
-        return Generate(start, stop);
-    }
-
-    public int BluePixel(int start = 0, int stop = 255)
-    {
-        return Generate(start, stop);
+    public string PixelString(int red = 50, int green = 50, int blue = 50){
+        return $"{Generate(red)} {Generate(green)} {Generate(blue)} ";
     }
 }

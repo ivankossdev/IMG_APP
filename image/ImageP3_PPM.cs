@@ -15,7 +15,7 @@ class ImageP3_PPM : Image
     {
         StringBuilder sb = new("P3\n");
         sb.Append($"{width} {height}\n255\n");
-        string color = $"{pixel.RedPixel(50, 100)} {pixel.GreenPixel(50)} {pixel.BluePixel(25)} ";
+        string color = pixel.PixelString();
 
         int count = 0;
 
@@ -27,7 +27,7 @@ class ImageP3_PPM : Image
             }
             else
             {
-                color = $"{pixel.RedPixel(50, 100)} {pixel.GreenPixel(50)} {pixel.BluePixel(25)} ";
+                color = pixel.PixelString();
                 count = 0;
             }
 
@@ -38,7 +38,6 @@ class ImageP3_PPM : Image
 
             sb.Append('\n');
         }
-
 
         Write(sb.ToString(), Name);
     }
