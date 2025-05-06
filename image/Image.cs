@@ -28,4 +28,18 @@ public class Image
             Console.WriteLine(ex.ToString());
         }
     }
+
+    protected void BinWrite(ref byte[] data,string name){
+        
+        using (FileStream fs = new FileStream(Path(name), FileMode.Append))
+        {
+            using (BinaryWriter w = new BinaryWriter(fs))
+            {
+                foreach (byte bt in data)
+                {
+                    w.Write(bt);
+                }
+            }
+        }
+    }
 }
