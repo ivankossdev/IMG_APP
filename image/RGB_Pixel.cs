@@ -2,7 +2,6 @@ namespace img_app;
 
 class RGB_Pixel : Random
 {
-
     private int Generate(int start = 0, int stop = 256)
     {
         if (start >= stop) throw new Exception("start >= stop parameter!!!");
