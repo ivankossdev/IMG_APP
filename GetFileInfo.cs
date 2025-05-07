@@ -1,9 +1,16 @@
 namespace img_app;
 
-public class GetInfo(string fileName){
+public class GetFileInfo{
+
+    private string _name = string.Empty;
+
+    public string Name{
+        get => _name;
+        set => _name = value;
+    }
     public void Info(){
         Console.WriteLine("Start app");
-        string path = $"{Directory.GetCurrentDirectory()}/{fileName}";
+        string path = $"{Directory.GetCurrentDirectory()}/{Name}";
 
         Console.WriteLine(path);
         try{

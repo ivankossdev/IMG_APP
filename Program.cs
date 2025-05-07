@@ -19,8 +19,11 @@ class Program
             color_PPM.Name = $"image_color_1024x768_{i}";
             color_PPM.CreateRandomFile(1024, 768);
         }
-        
-        GetInfo getInfo = new("image_4x4.bmp");
+
+        GetFileInfo getInfo = new()
+        {
+            Name = "image_4x4.bmp"
+        };
         getInfo.Info();
     }
 }
