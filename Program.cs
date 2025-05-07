@@ -20,10 +20,9 @@ class Program
             color_PPM.CreateRandomFile(1024, 768);
         }
 
-        GetFileInfo getInfo = new()
-        {
+        GetFileInfo getInfo = new(){
             Name = "image_4x4.bmp"
         };
-        getInfo.Info();
+        getInfo.GetAllByte();
     }
 }
