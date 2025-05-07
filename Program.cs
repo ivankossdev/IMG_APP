@@ -1,5 +1,4 @@
-﻿using System.Text;
-namespace img_app;
+﻿namespace img_app;
 
 class Program
 {

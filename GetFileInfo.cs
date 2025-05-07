@@ -1,3 +1,4 @@
+using System.Text;
 namespace img_app;
 
 public class GetFileInfo{
@@ -11,23 +12,35 @@ public class GetFileInfo{
     }
 
     public void GetAllByte(){
-        System.Console.WriteLine(_path);
+        Console.WriteLine("{0}\n", _path);
         try{
             using (FileStream fstream = File.OpenRead(_path))
             {
                 byte[] buffer = new byte[fstream.Length];
-
                 fstream.Read(buffer, 0, buffer.Length);
-                Console.WriteLine($"Len file {buffer.Length} byte. \n");
-
-                for (int i = 14; i < buffer.Length; i++)
-                {
-                    Console.WriteLine($"[{i}] {buffer[i]}");
-                }
+                string res = FormatOut(ref buffer);
+                Console.WriteLine(res);
             }
         }
         catch (FileNotFoundException){
             Console.WriteLine("File not found");
         }
+    }
+
+    private static string FormatOut(ref byte[] buffer){
+
+        int counter = 0;
+        StringBuilder sb = new();
+
+        foreach(byte b in buffer){
+            sb.AppendFormat("{0:X2} ", b);
+            counter++;
+            if (counter >= 16) {
+                counter = 0;
+                sb.Append('\n');
+            }            
+        }
+        sb.Append('\n');
+        return sb.ToString();
     }
 }
