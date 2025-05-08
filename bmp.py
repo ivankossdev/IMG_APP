@@ -33,31 +33,10 @@ def create_bmp():
         file.write(b'\x00\xFF\x00\xFF')                      #0 255 0 255 Green (Alpha: 255), Pixel (0,1)
         file.write(b'\x00\x00\xFF\xFF')                      #0 0 255 255 Red (Alpha: 255), Pixel (0,2)
         file.write(b'\xFF\xFF\xFF\xFF')                      #255 255 255 255 White (Alpha: 255), Pixel (0,3)
-        file.close()
-        
-def example():
-    print("Byte example")
-    with open("example.txt","w") as file:
-        file.write(str(b'BM') + "#ID field (42h, 4Dh)" + "\n")                                        
-        file.write(str((154).to_bytes(4,byteorder="little")) + "#154 bytes (122+32) Size of the BMP file" + "\n")         
-        file.write(str((0).to_bytes(2,byteorder="little")) + "#Unused" + "\n")           
-        file.write(str((0).to_bytes(2,byteorder="little")) + "#Unused" + "\n")           
-        file.write(str((122).to_bytes(4,byteorder="little")) + "#122 bytes (14+108) Offset where the pixel array (bitmap data) can be found" + "\n")         
-        file.write(str((108).to_bytes(4,byteorder="little")) + "#108 bytes Number of bytes in the DIB header (from this point)" + "\n")         
-        file.write(str((4).to_bytes(4,byteorder="little")) + "#4 pixels (left to right order) Width of the bitmap in pixels" + "\n")           
-        file.write(str((2).to_bytes(4,byteorder="little")) + "#2 pixels (bottom to top order) Height of the bitmap in pixels" + "\n")           
-        file.write(str((1).to_bytes(2,byteorder="little")) + "#1 plane Number of color planes being used" + "\n")           
-        file.write(str((32).to_bytes(2,byteorder="little")) + "#32 bits Number of bits per pixel" + "\n")          
-        file.write(str((3).to_bytes(4,byteorder="little")) + "#3 BI_BITFIELDS, no pixel array compression used" + "\n")           
-        file.write(str((32).to_bytes(4,byteorder="little")) + "#32 bytes Size of the raw bitmap data (including padding)" + "\n")          
-        file.write(str((2835).to_bytes(4,byteorder="little")) + "#2835 pixels/metre horizontal Print resolution of the image," + "\n")        
-        file.write(str((2835).to_bytes(4,byteorder="little")) + "#2835 pixels/metre vertical   72 DPI × 39.3701 inches per metre yields 2834.6472" + "\n")        
-        
-        file.close()
+        file.close()        
     
         
 if __name__ == "__main__":
-    example()
-    # print("Start")
-    # create_bmp()
-    # print("Stop")
+    print("Start")
+    create_bmp()
+    print("Stop")

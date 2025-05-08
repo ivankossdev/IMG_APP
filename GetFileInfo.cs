@@ -30,17 +30,17 @@ public class GetFileInfo{
     private static string FormatOut(ref byte[] buffer){
 
         int counter = 0;
-        StringBuilder sb = new();
+        StringBuilder sb_hex = new();
 
         foreach(byte b in buffer){
-            sb.AppendFormat("{0:X2} ", b);
+            sb_hex.AppendFormat("{0:X2} ", b);
             counter++;
             if (counter >= 16) {
                 counter = 0;
-                sb.Append('\n');
+                sb_hex.Append('\n');
             }            
         }
-        sb.Append('\n');
-        return sb.ToString();
+        sb_hex.Append('\n');
+        return sb_hex.ToString();
     }
 }

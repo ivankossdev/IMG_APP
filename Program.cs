@@ -5,8 +5,11 @@ class Program
     static void Main(string[] args)
     {
         GetFileInfo getInfo = new(){
-            Name = "image_4x4.bmp"
+            Name = "image_2x2.bmp"
         };
+        getInfo.GetAllByte();
+
+        getInfo.Name = "test.bmp";
         getInfo.GetAllByte();
     }
 
