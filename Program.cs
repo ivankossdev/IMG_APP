@@ -9,7 +9,7 @@ class Program
         };
         getInfo.GetAllByte();
 
-        getInfo.Name = "test.bmp";
+        getInfo.Name = "image.bmp";
         getInfo.GetAllByte();
     }
 

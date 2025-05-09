@@ -19,6 +19,7 @@ public class GetFileInfo{
                 byte[] buffer = new byte[fstream.Length];
                 fstream.Read(buffer, 0, buffer.Length);
                 string res = FormatOut(ref buffer);
+                WriteRes(res);
                 Console.WriteLine(res);
             }
         }
@@ -42,5 +43,19 @@ public class GetFileInfo{
         }
         sb_hex.Append('\n');
         return sb_hex.ToString();
+    }
+
+    protected void WriteRes(string data)
+    {
+        try
+        {
+            using FileStream fs = File.Create(_path.Replace("bmp", "txt"));
+            byte[] info = new UTF8Encoding(true).GetBytes(data);
+            fs.Write(info, 0, info.Length);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
     }
 }
