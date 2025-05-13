@@ -11,6 +11,8 @@ class Program
 
         getInfo.Name = "image.bmp";
         getInfo.GetAllByte();
+        CreateImage();
+
     }
 
     static void CreateImage(){
