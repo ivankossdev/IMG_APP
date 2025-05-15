@@ -10,17 +10,22 @@ public class Image
         set => _name = value;
     }
 
-    public bool CheckFolder(){
-        foreach(string s in Directory.GetDirectories(Directory.GetCurrentDirectory())){
-            if(s == $"{Directory.GetCurrentDirectory()}/example") return true;
+    public Image()
+    {
+        if(!CheckFolder()) Directory.CreateDirectory($"{Directory.GetCurrentDirectory()}/example/");
+    }
+
+    public bool CheckFolder()
+    {
+        foreach (string s in Directory.GetDirectories(Directory.GetCurrentDirectory()))
+        {
+            if (s == $"{Directory.GetCurrentDirectory()}/example") return true;
         }
         return false;
     }
 
     public string Path(string name)
     {
-        if(CheckFolder()) System.Console.WriteLine("Folder is found");
-        else Directory.CreateDirectory($"{Directory.GetCurrentDirectory()}/example/");
         return $"{Directory.GetCurrentDirectory()}/example/{name}";
     }
 
