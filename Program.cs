@@ -9,9 +9,9 @@ class Program
         string[] files = [
             "image.bmp",
             "image_2x2.bmp",
-            "image_4x4.bmp",
-            "image_400x300.bmp",
-            "image_640x480.bmp"
+            "image_5x2.bmp",
+            "image_5x4.bmp",
+            "image_4x4.bmp"
         ];
 
         foreach (string name in files)
