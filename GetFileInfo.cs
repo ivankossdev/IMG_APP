@@ -20,7 +20,7 @@ public class GetFileInfo{
                 fstream.Read(buffer, 0, buffer.Length);
                 string res = FormatOut(ref buffer);
                 WriteRes(res);
-                Console.WriteLine(res);
+                // Console.WriteLine(res);
             }
         }
         catch (FileNotFoundException){

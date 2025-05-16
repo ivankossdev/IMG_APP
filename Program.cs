@@ -4,23 +4,27 @@ class Program
 {
     static void Main(string[] args)
     {
-        GetFileInfo getInfo = new(){
+        GetFileInfo getInfo = new()
+        {
             Name = "image_2x2.bmp"
         };
         getInfo.GetAllByte();
 
         getInfo.Name = "image.bmp";
         getInfo.GetAllByte();
-        CreateImage();
+        // CreateImage();
+        // FileEdit("image.bmp");
 
     }
 
-    static void CreateImage(){
+    static void CreateImage()
+    {
         ImageP1_PBM bw_PBM = new();
         ImageP3_PPM color_PPM = new();
         ImageP5_PGM bw_PGM = new();
 
-        for(int i = 0; i < 4; i++){
+        for (int i = 0; i < 4; i++)
+        {
             bw_PBM.Name = $"image_bw_1024x768_{i}";
             bw_PBM.CreateRandomFile(1024, 768);
 
@@ -30,5 +34,12 @@ class Program
             color_PPM.Name = $"image_color_1024x768_{i}";
             color_PPM.CreateRandomFile(1024, 768);
         }
+    }
+
+    static void FileEdit(string name)
+    {
+        string path = $"{Directory.GetCurrentDirectory()}/{name}";
+        System.Console.WriteLine(path);
+
     }
 }
