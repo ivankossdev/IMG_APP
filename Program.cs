@@ -4,16 +4,21 @@ class Program
 {
     static void Main(string[] args)
     {
-        GetFileInfo getInfo = new()
-        {
-            Name = "image_2x2.bmp"
-        };
-        getInfo.GetAllByte();
+        GetFileInfo getInfo = new();
 
-        getInfo.Name = "image.bmp";
-        getInfo.GetAllByte();
-        // CreateImage();
-        // FileEdit("image.bmp");
+        string[] files = [
+            "image.bmp",
+            "image_2x2.bmp",
+            "image_4x4.bmp",
+            "image_400x300.bmp",
+            "image_640x480.bmp"
+        ];
+
+        foreach (string name in files)
+        {
+            getInfo.Name = name;
+            getInfo.GetAllByte(); 
+        }
 
     }
 
