@@ -1,4 +1,6 @@
-﻿namespace img_app;
+﻿using System.Text;
+
+namespace img_app;
 
 class Program
 {
@@ -45,10 +47,4 @@ class Program
 
     }
 
-    static void CreateBMP(string name, int width, int height)
-    {
-        string path = $"{Directory.GetCurrentDirectory()}/{name}";
-        System.Console.WriteLine(path);
-        
-    }
 }
