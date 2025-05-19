@@ -7,17 +7,14 @@ class Program
         GetFileInfo getInfo = new();
 
         string[] files = [
-            "image.bmp",
-            "image_2x2.bmp",
-            "image_5x2.bmp",
-            "image_5x4.bmp",
-            "image_4x4.bmp"
+            "i_1x2.bmp",
+            "i_1x3.bmp",
         ];
 
         foreach (string name in files)
         {
             getInfo.Name = name;
-            getInfo.GetAllByte(); 
+            getInfo.GetAllByte();
         }
 
     }
@@ -46,5 +43,12 @@ class Program
         string path = $"{Directory.GetCurrentDirectory()}/{name}";
         System.Console.WriteLine(path);
 
+    }
+
+    static void CreateBMP(string name, int width, int height)
+    {
+        string path = $"{Directory.GetCurrentDirectory()}/{name}";
+        System.Console.WriteLine(path);
+        
     }
 }
