@@ -6,18 +6,20 @@ class Program
 {
     static void Main(string[] args)
     {
-        GetFileInfo getInfo = new();
+        // GetFileInfo getInfo = new();
 
-        string[] files = [
-            "i_1x2.bmp",
-            "i_1x3.bmp",
-        ];
+        // string[] files = [
+        //     "i_1x2.bmp",
+        //     "i_1x3.bmp",
+        // ];
 
-        foreach (string name in files)
-        {
-            getInfo.Name = name;
-            getInfo.GetAllByte();
-        }
+        // foreach (string name in files)
+        // {
+        //     getInfo.Name = name;
+        //     getInfo.GetAllByte();
+        // }
+        Image_BMP image_BMP = new();
+        image_BMP.CreateBMP(1, 1);
 
     }
 
@@ -38,13 +40,6 @@ class Program
             color_PPM.Name = $"image_color_1024x768_{i}";
             color_PPM.CreateRandomFile(1024, 768);
         }
-    }
-
-    static void FileEdit(string name)
-    {
-        string path = $"{Directory.GetCurrentDirectory()}/{name}";
-        System.Console.WriteLine(path);
-
     }
 
 }
