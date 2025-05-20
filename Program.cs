@@ -1,4 +1,6 @@
 ﻿using System.Text;
+using System.IO.Hashing;
+// dotnet add package System.IO.Hashing
 
 namespace img_app;
 
