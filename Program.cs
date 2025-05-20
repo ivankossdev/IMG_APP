@@ -16,8 +16,9 @@ class Program
 
         GetFileInfo getInfo = new();
         string[] files = [
+            "bmp/i_1x1.bmp",
             "bmp/i_1x2.bmp",
-            "bmp/i_1x3.bmp",
+            "bmp/i_1x3.bmp"
         ];
 
         foreach (string name in files)
@@ -25,8 +26,6 @@ class Program
             getInfo.Name = name;
             getInfo.GetAllByte();
         }
-
-
     }
 
     static void CreateImage()

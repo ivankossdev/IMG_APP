@@ -12,7 +12,7 @@ public class GetFileInfo{
     }
 
     public void GetAllByte(){
-        Console.WriteLine("{0}\n", _path);
+        Console.WriteLine($"{_path}");
         try{
             using (FileStream fstream = File.OpenRead(_path))
             {
@@ -20,7 +20,6 @@ public class GetFileInfo{
                 fstream.Read(buffer, 0, buffer.Length);
                 string res = FormatOut(ref buffer);
                 WriteRes(res);
-                // Console.WriteLine(res);
             }
         }
         catch (FileNotFoundException){
