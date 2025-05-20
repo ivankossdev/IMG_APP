@@ -4,6 +4,7 @@ namespace img_app;
 class Image_BMP : Image
 {
     private string _name = "image.bmp";
+    private int AppendBytes = 0;
 
     public new string Name
     {
@@ -19,13 +20,19 @@ class Image_BMP : Image
 
     private byte[] Header(int width, int height)
     {
-        int len = width * height * 4;
+        AppendBytes = width % 4;
+        int sizeArray =(width * height * 3) + (height * AppendBytes) ;
 
         byte[] header = new byte[14];
 
         header[0] = 0x42;
         header[1] = 0x4d;
         header[10] = 0x36;
+
+        int sizeFile = sizeArray + header[10];
+
+        System.Console.WriteLine($"... size array is {sizeArray} image {width}x1");
+        System.Console.WriteLine("... append byte to end word {0} \n... file size 0x{1:X2}", AppendBytes, sizeFile);
 
         for (int i = 2; i < 6; i++)
         {
