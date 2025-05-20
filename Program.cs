@@ -6,20 +6,26 @@ class Program
 {
     static void Main(string[] args)
     {
-        // GetFileInfo getInfo = new();
-
-        // string[] files = [
-        //     "i_1x2.bmp",
-        //     "i_1x3.bmp",
-        // ];
-
-        // foreach (string name in files)
-        // {
-        //     getInfo.Name = name;
-        //     getInfo.GetAllByte();
-        // }
+        string[] folders = ["bmp", "txt"];
         Image_BMP image_BMP = new();
-        image_BMP.CreateBMP(1, 1);
+
+        foreach (string name in folders) {
+            if (!image_BMP.CheckFolder(name))
+            Directory.CreateDirectory($"{Directory.GetCurrentDirectory()}/{name}/");
+        }
+
+        GetFileInfo getInfo = new();
+        string[] files = [
+            "bmp/i_1x2.bmp",
+            "bmp/i_1x3.bmp",
+        ];
+
+        foreach (string name in files)
+        {
+            getInfo.Name = name;
+            getInfo.GetAllByte();
+        }
+
 
     }
 

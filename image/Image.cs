@@ -23,6 +23,15 @@ public class Image
         }
         return false;
     }
+    
+    public bool CheckFolder(string folder)
+    {
+        foreach (string s in Directory.GetDirectories(Directory.GetCurrentDirectory()))
+        {
+            if (s == $"{Directory.GetCurrentDirectory()}/{folder}") return true;
+        }
+        return false;
+    }
 
     public string Path(string name)
     {
