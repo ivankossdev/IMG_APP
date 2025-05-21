@@ -21,7 +21,7 @@ class Image_BMP : Image
     private byte[] Header(int width, int height)
     {
         AppendBytes = width % 4;
-        int sizeArray =(width * height * 3) + (height * AppendBytes) ;
+        int sizeArray = (width * height * 3) + (height * AppendBytes);
 
         byte[] header = new byte[14];
 
@@ -31,24 +31,12 @@ class Image_BMP : Image
 
         int sizeFile = sizeArray + header[10];
 
-        System.Console.WriteLine($"... size array is {sizeArray} image {width}x1");
-        System.Console.WriteLine("... append byte to end word {0} \n... file size 0x{1:X2}", AppendBytes, sizeFile);
-
-        for (int i = 2; i < 6; i++)
-        {
-            header[i] = 0xff;
-        }
+        SetSize((uint)sizeFile, ref header);
 
         return header;
     }
 
-    private StringBuilder Info()
-    {
-        StringBuilder info = new();
-        return info;
-    }
-    
-    private string FormatOut(ref byte[] buffer)
+    private static string FormatOut(ref byte[] buffer)
     {
 
         int counter = 0;
@@ -64,8 +52,16 @@ class Image_BMP : Image
                 sb_hex.Append('\n');
             }
         }
-        sb_hex.Append('\n');
+        
         return sb_hex.ToString();
+    }
+
+    private static void SetSize(uint size, ref byte[] array)
+    {
+        for (int i = 2, i_ = 0; i < 6; i++, i_++)
+        {
+            array[i] = (byte)((size >> (8 * i_)) & 0xff);
+        }
     }
 }
 

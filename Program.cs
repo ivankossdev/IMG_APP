@@ -8,35 +8,35 @@ class Program
 {
     static void Main(string[] args)
     {
-        string[] folders = ["bmp", "txt"];
+        // string[] folders = ["bmp", "txt"];
         Image_BMP image_BMP = new();
         for (int i = 1; i <= 5; i++)
         {
             image_BMP.CreateBMP(i, 1);
         }
 
-        foreach (string name in folders)
-        {
-            if (!image_BMP.CheckFolder(name))
-                Directory.CreateDirectory($"{Directory.GetCurrentDirectory()}/{name}/");
-        }
+        // foreach (string name in folders)
+        // {
+        //     if (!image_BMP.CheckFolder(name))
+        //         Directory.CreateDirectory($"{Directory.GetCurrentDirectory()}/{name}/");
+        // }
 
-        GetFileInfo getInfo = new();
-        string[] files = [
-            "bmp/i_1x1.bmp",
-            "bmp/i_1x2.bmp",
-            "bmp/i_1x3.bmp",
-            "bmp/i_2x1.bmp",
-            "bmp/i_3x1.bmp",
-            "bmp/i_4x1.bmp",
-            "bmp/i_5x1.bmp"
-        ];
+        // GetFileInfo getInfo = new();
+        // string[] files = [
+        //     "bmp/i_1x1.bmp",
+        //     "bmp/i_1x2.bmp",
+        //     "bmp/i_1x3.bmp",
+        //     "bmp/i_2x1.bmp",
+        //     "bmp/i_3x1.bmp",
+        //     "bmp/i_4x1.bmp",
+        //     "bmp/i_5x1.bmp"
+        // ];
 
-        foreach (string name in files)
-        {
-            getInfo.Name = name;
-            getInfo.GetAllByte();
-        }
+        // foreach (string name in files)
+        // {
+        //     getInfo.Name = name;
+        //     getInfo.GetAllByte();
+        // }
     }
 
     static void CreateImage()
