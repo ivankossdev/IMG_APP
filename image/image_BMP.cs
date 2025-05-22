@@ -14,28 +14,38 @@ class Image_BMP : Image
 
     public void CreateBMP(int width, int height)
     {
-        byte[] res = Header(width, height);
+        byte[] res = HeaderFile(width, height);
         System.Console.WriteLine(FormatOut(ref res));
     }
 
-    private byte[] Header(int width, int height)
+    private byte[] HeaderFile(int width, int height)
     {
         AppendBytes = width % 4;
         int sizeArray = (width * height * 3) + (height * AppendBytes);
 
-        byte[] header = new byte[14];
+        byte[] array = new byte[54];
 
-        header[0] = 0x42;
-        header[1] = 0x4d;
-        header[10] = 0x36;
+        array[0] = 0x42;  array[1] = 0x4d;  array[10] = 0x36;
+        array[14] = 0x28; array[26] = 0x01; array[28] = 0x18;
 
-        int sizeFile = sizeArray + header[10];
+        int sizeFile = sizeArray + array[10];
 
-        SetSize((uint)sizeFile, ref header);
-
-        return header;
+        // Размер файла
+        InsertData((uint)sizeFile, ref array, 2, 5);
+        // Размер массива
+        InsertData((uint)sizeArray, ref array, 34, 38);
+        System.Console.WriteLine("size array {0:X2}", sizeArray);
+        return array;
     }
 
+    private static void InsertData(uint size, ref byte[] array, int startPosition, int stopPosition)
+    {
+        for (int i = startPosition, i_ = 0; i <+ stopPosition; i++, i_++)
+        {
+            array[i] = (byte)((size >> (8 * i_)) & 0xff);
+        }
+    }
+    
     private static string FormatOut(ref byte[] buffer)
     {
 
@@ -52,16 +62,8 @@ class Image_BMP : Image
                 sb_hex.Append('\n');
             }
         }
-        
-        return sb_hex.ToString();
-    }
 
-    private static void SetSize(uint size, ref byte[] array)
-    {
-        for (int i = 2, i_ = 0; i < 6; i++, i_++)
-        {
-            array[i] = (byte)((size >> (8 * i_)) & 0xff);
-        }
+        return sb_hex.ToString();
     }
 }
 
