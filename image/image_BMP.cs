@@ -33,14 +33,17 @@ class Image_BMP : Image
         // Размер файла
         InsertData((uint)sizeFile, ref array, 2, 5);
         // Размер массива
-        InsertData((uint)sizeArray, ref array, 34, 38);
-        System.Console.WriteLine("size array {0:X2}", sizeArray);
+        InsertData((uint)sizeArray, ref array, 34, 37);
+        // Разрешение на пиксель по горизотали и вертикали 41115
+        InsertData(0xA0C3, ref array, 38, 41);
+        InsertData(0xA0C3, ref array, 42, 45);
+
         return array;
     }
 
     private static void InsertData(uint size, ref byte[] array, int startPosition, int stopPosition)
     {
-        for (int i = startPosition, i_ = 0; i <+ stopPosition; i++, i_++)
+        for (int i = startPosition, i_ = 0; i <= stopPosition; i++, i_++)
         {
             array[i] = (byte)((size >> (8 * i_)) & 0xff);
         }
