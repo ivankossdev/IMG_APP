@@ -30,7 +30,8 @@ class Program
         //     "bmp/i_3x1.bmp",
         //     "bmp/i_4x1.bmp",
         //     "bmp/i_5x1.bmp",
-        //     "bmp/i_82x64.bmp"
+        //     "bmp/i_82x64.bmp",
+        //     "bmp/i_600x400.bmp"
         // ];
 
         // foreach (string name in files)
@@ -39,6 +40,7 @@ class Program
         //     getInfo.GetAllByte();
         // }
         image_BMP.CreateBMP(82, 64);
+        image_BMP.CreateBMP(600, 400);
     }
 
     static void CreateImage()
