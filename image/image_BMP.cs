@@ -15,7 +15,11 @@ class Image_BMP : Image
     public void CreateBMP(int width, int height)
     {
         byte[] res = HeaderFile(width, height);
+
+        byte[] body = Body(ref res);
+
         System.Console.WriteLine(FormatOut(ref res));
+        System.Console.WriteLine($"-----------------------------------------------\n{FormatOut(ref body)}");
     }
 
     private byte[] HeaderFile(int width, int height)
@@ -41,12 +45,25 @@ class Image_BMP : Image
         return array;
     }
 
+    private byte[] Body(ref byte[] array)
+    {
+        int len = GetData(ref array);
+        byte[] _array = new byte[len];
+
+        return _array;
+    }
+
     private static void InsertData(uint size, ref byte[] array, int startPosition, int stopPosition)
     {
         for (int i = startPosition, i_ = 0; i <= stopPosition; i++, i_++)
         {
             array[i] = (byte)((size >> (8 * i_)) & 0xff);
         }
+    }
+
+    private static int GetData(ref byte[] array)
+    {
+        return 0;
     }
     
     private static string FormatOut(ref byte[] buffer)
