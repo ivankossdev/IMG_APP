@@ -19,7 +19,7 @@ class Image_BMP : Image
         byte[] body = Body(ref res);
 
         System.Console.WriteLine(FormatOut(ref res));
-        System.Console.WriteLine($"-----------------------------------------------\n{FormatOut(ref body)}");
+        System.Console.WriteLine($"body len {body.Length:X8}\n");
     }
 
     private byte[] HeaderFile(int width, int height)
@@ -47,8 +47,7 @@ class Image_BMP : Image
 
     private byte[] Body(ref byte[] array)
     {
-        uint len = (uint)GetData(ref array, 34, 37);
-        System.Console.WriteLine("Len 0x{0:X2}", len);
+        uint len = GetData(ref array, 34, 37);
         byte[] _array = new byte[len];
 
         return _array;
@@ -69,8 +68,8 @@ class Image_BMP : Image
         {
             data |= (uint)array[i] << (8 * i_);
         } 
-        System.Console.WriteLine($"{data:X8}");
-        return 0;
+        
+        return data;
     }
     
     private static string FormatOut(ref byte[] buffer)
