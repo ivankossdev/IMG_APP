@@ -64,7 +64,7 @@ class Image_BMP : Image
 
     private static int GetData(ref byte[] array, int startPosition, int stopPosition)
     {
-        for (int i = startPosition; i <= stopPosition; i++)
+        for (int i = stopPosition; i >= startPosition; i--)
         {
             System.Console.WriteLine("{0} [{1:X2}]", i, array[i]);
         } 
