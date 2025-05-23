@@ -47,7 +47,7 @@ class Image_BMP : Image
 
     private byte[] Body(ref byte[] array)
     {
-        int len = GetData(ref array, 34, 37);
+        uint len = (uint)GetData(ref array, 34, 37);
         System.Console.WriteLine("Len 0x{0:X2}", len);
         byte[] _array = new byte[len];
 
@@ -62,12 +62,14 @@ class Image_BMP : Image
         }
     }
 
-    private static int GetData(ref byte[] array, int startPosition, int stopPosition)
+    private static uint GetData(ref byte[] array, int startPosition, int stopPosition)
     {
-        for (int i = stopPosition; i >= startPosition; i--)
+        uint data = 0;
+        for (int i = startPosition, i_ = 0; i <= stopPosition; i++, i_++)
         {
-            System.Console.WriteLine("{0} [{1:X2}]", i, array[i]);
+            data |= (uint)array[i] << (8 * i_);
         } 
+        System.Console.WriteLine($"{data:X8}");
         return 0;
     }
     
