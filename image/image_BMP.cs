@@ -17,6 +17,7 @@ class Image_BMP : Image
         byte[] res = HeaderFile(width, height);
         byte[] body = Body(ref res);
         Console.WriteLine(FormatOut(ref body));
+        BinWrite(ref body, Name);
     }
 
     private byte[] HeaderFile(int width, int height)
@@ -57,7 +58,7 @@ class Image_BMP : Image
             if (i < 54)
                 _array[i] = array[i];
             else
-                _array[i] = 0xff;
+                _array[i] = 0x80;
         }
 
         return _array;
