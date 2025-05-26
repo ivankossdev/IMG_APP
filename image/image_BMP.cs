@@ -40,8 +40,8 @@ class Image_BMP : Image
         // Размер массива
         InsertData((uint)sizeArray, ref array, 34, 37);
         // Разрешение на пиксель по горизотали и вертикали 41115
-        InsertData(0xA0C3, ref array, 38, 41);
-        InsertData(0xA0C3, ref array, 42, 45);
+        InsertData(0xAC3, ref array, 38, 41);
+        InsertData(0xAC3, ref array, 42, 45);
 
         return array;
     }
