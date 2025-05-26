@@ -11,6 +11,10 @@ class Program
         Image_BMP image_BMP = new();
         image_BMP.Name = "image_82x64";
         image_BMP.CreateBMP(82, 64);
+        
+        GetFileInfo getFileInfo = new();
+        getFileInfo.Name = "example/image_82x64.bmp";
+        getFileInfo.GetAllByte();
     }
 
     static void CreateImage()

@@ -16,7 +16,6 @@ class Image_BMP : Image
     {
         byte[] res = HeaderFile(width, height);
         byte[] body = Body(ref res);
-        Console.WriteLine(FormatOut(ref body));
         BinWrite(ref body, Name);
     }
 
@@ -47,18 +46,35 @@ class Image_BMP : Image
         return array;
     }
 
+    
     private byte[] Body(ref byte[] array)
     {
         uint len = GetData(ref array, 34, 37) + (uint)array.Length;
         byte[] _array = new byte[len];
-        uint widthImage = GetData(ref array, 18, 21);
+        uint widthImage = GetData(ref array, 18, 21) * 3;
+        uint c = 0;
 
         for (int i = 0; i < len; i++)
         {
             if (i < 54)
                 _array[i] = array[i];
             else
-                _array[i] = 0x80;
+            {
+                if (c < widthImage)
+                {
+                    _array[i] = 0xff;
+                    c++;
+                }
+                else if (c >= widthImage && c < (widthImage + AppendBytes - 1))
+                {
+                    _array[i] = 0x00;
+                    c++;
+                }
+                else
+                {
+                    c = 0;
+                }
+            }
         }
 
         return _array;
@@ -83,24 +99,23 @@ class Image_BMP : Image
         return data;
     }
     
-    private static string FormatOut(ref byte[] buffer)
-    {
+    // private static string FormatOut(ref byte[] buffer)
+    // {
 
-        int counter = 0;
-        StringBuilder sb_hex = new();
+    //     int counter = 0;
+    //     StringBuilder sb_hex = new();
 
-        foreach (byte b in buffer)
-        {
-            sb_hex.AppendFormat("{0:X2} ", b);
-            counter++;
-            if (counter >= 16)
-            {
-                counter = 0;
-                sb_hex.Append('\n');
-            }
-        }
+    //     foreach (byte b in buffer)
+    //     {
+    //         sb_hex.AppendFormat("{0:X2} ", b);
+    //         counter++;
+    //         if (counter >= 16)
+    //         {
+    //             counter = 0;
+    //             sb_hex.Append('\n');
+    //         }
+    //     }
 
-        return sb_hex.ToString();
-    }
+    //     return sb_hex.ToString();
+    // }
 }
-
