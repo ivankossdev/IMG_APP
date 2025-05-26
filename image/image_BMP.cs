@@ -18,8 +18,9 @@ class Image_BMP : Image
 
         byte[] body = Body(ref res);
 
-        System.Console.WriteLine(FormatOut(ref res));
-        System.Console.WriteLine($"body len {body.Length:X8}\n");
+        Console.WriteLine(FormatOut(ref res));
+        Console.WriteLine($"\nw {width} h {height}");
+        Console.WriteLine($"body len {body.Length:X8}\n");
     }
 
     private byte[] HeaderFile(int width, int height)
@@ -36,6 +37,10 @@ class Image_BMP : Image
 
         // Размер файла
         InsertData((uint)sizeFile, ref array, 2, 5);
+        // Ширина изображения
+        InsertData((uint)width, ref array, 18, 21);
+        // Высота изображения
+        InsertData((uint)height, ref array, 22, 25);
         // Размер массива
         InsertData((uint)sizeArray, ref array, 34, 37);
         // Разрешение на пиксель по горизотали и вертикали 41115
