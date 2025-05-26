@@ -15,12 +15,8 @@ class Image_BMP : Image
     public void CreateBMP(int width, int height)
     {
         byte[] res = HeaderFile(width, height);
-
         byte[] body = Body(ref res);
-
-        Console.WriteLine(FormatOut(ref res));
-        Console.WriteLine($"\nw {width} h {height}");
-        Console.WriteLine($"body len {body.Length:X8}\n");
+        Console.WriteLine(FormatOut(ref body));
     }
 
     private byte[] HeaderFile(int width, int height)
@@ -52,8 +48,17 @@ class Image_BMP : Image
 
     private byte[] Body(ref byte[] array)
     {
-        uint len = GetData(ref array, 34, 37);
+        uint len = GetData(ref array, 34, 37) + (uint)array.Length;
         byte[] _array = new byte[len];
+        uint widthImage = GetData(ref array, 18, 21);
+
+        for (int i = 0; i < len; i++)
+        {
+            if (i < 54)
+                _array[i] = array[i];
+            else
+                _array[i] = 0xff;
+        }
 
         return _array;
     }

@@ -39,8 +39,9 @@ class Program
         //     getInfo.Name = name;
         //     getInfo.GetAllByte();
         // }
-        image_BMP.CreateBMP(82, 64);
-        image_BMP.CreateBMP(600, 400);
+        image_BMP.CreateBMP(3, 1);
+        // image_BMP.CreateBMP(82, 64);
+        // image_BMP.CreateBMP(600, 400);
     }
 
     static void CreateImage()
