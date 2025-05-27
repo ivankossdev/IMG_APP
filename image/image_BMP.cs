@@ -51,8 +51,6 @@ class Image_BMP : Image
     {
         uint len = GetData(ref array, 34, 37) + (uint)array.Length;
         byte[] _array = new byte[len];
-        uint widthImage = GetData(ref array, 18, 21) * 3;
-        uint c = 0;
 
         for (int i = 0; i < len; i++)
         {
@@ -60,20 +58,7 @@ class Image_BMP : Image
                 _array[i] = array[i];
             else
             {
-                if (c < widthImage)
-                {
-                    _array[i] = 0xff;
-                    c++;
-                }
-                else if (c >= widthImage && c < (widthImage + AppendBytes - 1))
-                {
-                    _array[i] = 0x00;
-                    c++;
-                }
-                else
-                {
-                    c = 0;
-                }
+                _array[i] = 0xff;
             }
         }
 
