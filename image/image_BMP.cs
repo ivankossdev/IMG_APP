@@ -45,11 +45,11 @@ class Image_BMP : Image
 
         return array;
     }
-
     
     private byte[] Body(ref byte[] array)
     {
         uint len = GetData(ref array, 34, 37) + (uint)array.Length;
+        uint lenWord = GetData(ref array, 18, 21) * 3 + (uint)AppendBytes;
         byte[] _array = new byte[len];
 
         for (int i = 0; i < len; i++)
@@ -61,6 +61,9 @@ class Image_BMP : Image
                 _array[i] = 0xff;
             }
         }
+
+        System.Console.WriteLine($"word {lenWord * GetData(ref array,22, 25):X4}");
+        System.Console.WriteLine($"len  {len - 54:X4}");
 
         return _array;
     }

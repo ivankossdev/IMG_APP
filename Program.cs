@@ -14,7 +14,7 @@ class Program
         image_BMP.CreateBMP(w, h);
         
         GetFileInfo getFileInfo = new();
-        getFileInfo.Name = $"example/image_{w}x{64}.bmp";
+        getFileInfo.Name = $"example/image_{w}x{h}.bmp";
         getFileInfo.GetAllByte();
     }
 
