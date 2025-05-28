@@ -52,16 +52,13 @@ class Image_BMP : Image
         uint lenWord = GetData(ref array, 18, 21) * 3 + (uint)AppendBytes;
         byte[] _array = new byte[len];
 
-        int i = 0;
-        do
-        {
+        for(int i = 0; i < 54; i++)
             _array[i] = array[i];
-            i++;
-        }
-        while (i < 54);
 
-        InsertWord(ref _array, lenWord, 0);
-        InsertWord(ref _array, lenWord, 2);
+        for (uint c = 0; c < GetData(ref array, 22, 25); c++)
+        {
+            InsertWord(ref _array, lenWord, c);
+        }
 
         return _array;
     }
@@ -70,11 +67,12 @@ class Image_BMP : Image
     {
         uint _lenWord = lenWord - (uint)AppendBytes + 54;
         c = lenWord * c;
+
         for (uint i = 54 + c; i < _lenWord + c; i += 3)
         {
             array[i] = 0xff;
-            array[i + 1] = 0x0f;
-            array[i + 2] = 0xf0;
+            array[i + 1] = 0xff;
+            array[i + 2] = 0xff;
         }
     }
 
