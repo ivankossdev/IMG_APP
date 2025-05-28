@@ -8,7 +8,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        const int w = 82, h = 64; 
+        const int w = 5, h = 4; 
         Image_BMP image_BMP = new();
         image_BMP.Name = $"image_{w}x{h}";
         image_BMP.CreateBMP(w, h);

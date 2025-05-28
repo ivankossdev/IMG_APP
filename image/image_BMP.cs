@@ -55,22 +55,12 @@ class Image_BMP : Image
         int i = 0;
         do
         {
-            if (i < 54)
-            {
-                _array[i] = array[i];
-                i++;
-            }
-            else
-            {
-                _array[i] = 0xff;
-                _array[i + 1] = 0x00;
-                if ((i + 2) < len)
-                {
-                    _array[i + 2] = 0xf0;
-                }
-                i += 3;
-            }
-        } while (i < len);
+            _array[i] = array[i];
+            i++;
+        }
+        while (i < 54);
+
+        InsertWord(ref _array, lenWord);
 
         System.Console.WriteLine($"h {GetData(ref array, 22, 25):X4}");
         System.Console.WriteLine($"word {lenWord * GetData(ref array, 22, 25):X4}");
@@ -79,7 +69,16 @@ class Image_BMP : Image
         return _array;
     }
 
-
+    private void InsertWord(ref byte[] array, uint lenWord)
+    {
+        uint _lenWord = lenWord - (uint)AppendBytes + 54;
+        for (uint i = 54; i < _lenWord; i += 3)
+        {
+            array[i] = 0xff;
+            array[i + 1] = 0x0f;
+            array[i + 2] = 0xf0;
+        }
+    }
 
     private static void InsertData(uint size, ref byte[] array, int startPosition, int stopPosition)
     {
