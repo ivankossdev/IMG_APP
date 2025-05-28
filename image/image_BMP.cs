@@ -60,19 +60,17 @@ class Image_BMP : Image
         }
         while (i < 54);
 
-        InsertWord(ref _array, lenWord);
-
-        System.Console.WriteLine($"h {GetData(ref array, 22, 25):X4}");
-        System.Console.WriteLine($"word {lenWord * GetData(ref array, 22, 25):X4}");
-        System.Console.WriteLine($"len  {len - 54:X4}");
+        InsertWord(ref _array, lenWord, 0);
+        InsertWord(ref _array, lenWord, 2);
 
         return _array;
     }
 
-    private void InsertWord(ref byte[] array, uint lenWord)
+    private void InsertWord(ref byte[] array, uint lenWord, uint c)
     {
         uint _lenWord = lenWord - (uint)AppendBytes + 54;
-        for (uint i = 54; i < _lenWord; i += 3)
+        c = lenWord * c;
+        for (uint i = 54 + c; i < _lenWord + c; i += 3)
         {
             array[i] = 0xff;
             array[i + 1] = 0x0f;
