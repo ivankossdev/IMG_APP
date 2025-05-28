@@ -26,7 +26,7 @@ class Image_BMP : Image
 
         byte[] array = new byte[54];
 
-        array[0] = 0x42;  array[1] = 0x4d;  array[10] = 0x36;
+        array[0] = 0x42; array[1] = 0x4d; array[10] = 0x36;
         array[14] = 0x28; array[26] = 0x01; array[28] = 0x18;
 
         int sizeFile = sizeArray + array[10];
@@ -45,7 +45,7 @@ class Image_BMP : Image
 
         return array;
     }
-    
+
     private byte[] Body(ref byte[] array)
     {
         uint len = GetData(ref array, 34, 37) + (uint)array.Length;
@@ -58,10 +58,21 @@ class Image_BMP : Image
             if (i < 54)
             {
                 _array[i] = array[i];
+                i++;
             }
-            i++;
+            else
+            {
+                _array[i] = 0xff;
+                _array[i + 1] = 0x00;
+                if ((i + 2) < len)
+                {
+                    _array[i + 2] = 0xf0;
+                }
+                i += 3;
+            }
         } while (i < len);
 
+        System.Console.WriteLine($"h {GetData(ref array, 22, 25):X4}");
         System.Console.WriteLine($"word {lenWord * GetData(ref array, 22, 25):X4}");
         System.Console.WriteLine($"len  {len - 54:X4}");
 
@@ -84,11 +95,11 @@ class Image_BMP : Image
         for (int i = startPosition, i_ = 0; i <= stopPosition; i++, i_++)
         {
             data |= (uint)array[i] << (8 * i_);
-        } 
-        
+        }
+
         return data;
     }
-    
+
     // private static string FormatOut(ref byte[] buffer)
     // {
 
