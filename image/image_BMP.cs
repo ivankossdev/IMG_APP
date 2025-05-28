@@ -52,21 +52,23 @@ class Image_BMP : Image
         uint lenWord = GetData(ref array, 18, 21) * 3 + (uint)AppendBytes;
         byte[] _array = new byte[len];
 
-        for (int i = 0; i < len; i++)
+        int i = 0;
+        do
         {
             if (i < 54)
-                _array[i] = array[i];
-            else
             {
-                _array[i] = 0xff;
+                _array[i] = array[i];
             }
-        }
+            i++;
+        } while (i < len);
 
-        System.Console.WriteLine($"word {lenWord * GetData(ref array,22, 25):X4}");
+        System.Console.WriteLine($"word {lenWord * GetData(ref array, 22, 25):X4}");
         System.Console.WriteLine($"len  {len - 54:X4}");
 
         return _array;
     }
+
+
 
     private static void InsertData(uint size, ref byte[] array, int startPosition, int stopPosition)
     {
