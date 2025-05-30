@@ -63,16 +63,16 @@ class Image_BMP : Image
         return _array;
     }
 
-    private void InsertWord(ref byte[] array, uint lenWord, uint c)
+    private void InsertWord(ref byte[] array, uint lenWord, uint c, byte blue = 0xff, byte green = 0xff, byte red = 0xff )
     {
         uint _lenWord = lenWord - (uint)AppendBytes + 54;
         c = lenWord * c;
 
         for (uint i = 54 + c; i < _lenWord + c; i += 3)
         {
-            array[i] = 0xff;
-            array[i + 1] = 0xff;
-            array[i + 2] = 0xff;
+            array[i] = blue; 
+            array[i + 1] = green;
+            array[i + 2] = red;
         }
     }
 
