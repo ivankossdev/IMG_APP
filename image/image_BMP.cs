@@ -93,24 +93,4 @@ class Image_BMP : Image
 
         return data;
     }
-
-    // private static string FormatOut(ref byte[] buffer)
-    // {
-
-    //     int counter = 0;
-    //     StringBuilder sb_hex = new();
-
-    //     foreach (byte b in buffer)
-    //     {
-    //         sb_hex.AppendFormat("{0:X2} ", b);
-    //         counter++;
-    //         if (counter >= 16)
-    //         {
-    //             counter = 0;
-    //             sb_hex.Append('\n');
-    //         }
-    //     }
-
-    //     return sb_hex.ToString();
-    // }
 }

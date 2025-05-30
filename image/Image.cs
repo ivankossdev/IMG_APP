@@ -12,7 +12,7 @@ public class Image
 
     public Image()
     {
-        if(!CheckFolder()) Directory.CreateDirectory($"{Directory.GetCurrentDirectory()}/example/");
+        if (!CheckFolder()) Directory.CreateDirectory($"{Directory.GetCurrentDirectory()}/example/");
     }
 
     public bool CheckFolder()
@@ -23,7 +23,7 @@ public class Image
         }
         return false;
     }
-    
+
     public bool CheckFolder(string folder)
     {
         foreach (string s in Directory.GetDirectories(Directory.GetCurrentDirectory()))
@@ -52,8 +52,9 @@ public class Image
         }
     }
 
-    protected void BinWrite(ref byte[] data,string name){
-        
+    protected void BinWrite(ref byte[] data, string name)
+    {
+
         using (FileStream fs = new FileStream(Path(name), FileMode.Append))
         {
             using (BinaryWriter w = new BinaryWriter(fs))
@@ -64,5 +65,10 @@ public class Image
                 }
             }
         }
+    }
+
+    protected byte Read()
+    {
+        return new byte();
     }
 }
