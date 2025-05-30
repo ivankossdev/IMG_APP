@@ -50,20 +50,19 @@ class Image_BMP : Image
     {
         uint len = GetData(ref array, 34, 37) + (uint)array.Length;
         uint lenWord = GetData(ref array, 18, 21) * 3 + (uint)AppendBytes;
+        uint h = GetData(ref array, 22, 25);
         byte[] _array = new byte[len];
 
-        for(int i = 0; i < 54; i++)
+        for (int i = 0; i < 54; i++)
             _array[i] = array[i];
 
-        for (uint c = 0; c < GetData(ref array, 22, 25); c++)
-        {
-            InsertWord(ref _array, lenWord, c);
-        }
+        for (uint c = 0; c < h; c++)
+            InsertWord(ref _array, lenWord, c, 0xff, 0xff, 0xff);
 
         return _array;
     }
 
-    private void InsertWord(ref byte[] array, uint lenWord, uint c, byte blue = 0xff, byte green = 0xff, byte red = 0xff )
+    private void InsertWord(ref byte[] array, uint lenWord, uint c, byte blue, byte green, byte red )
     {
         uint _lenWord = lenWord - (uint)AppendBytes + 54;
         c = lenWord * c;
