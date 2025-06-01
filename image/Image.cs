@@ -66,7 +66,7 @@ public class Image
         }
     }
 
-    public byte[] Read(string name)
+    protected byte[] Read(string name)
     {
         try
         {

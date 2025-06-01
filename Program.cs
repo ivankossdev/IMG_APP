@@ -16,7 +16,5 @@ class Program
         GetFileInfo getFileInfo = new();
         getFileInfo.Name = $"example/image_{w}x{h}.bmp";
         getFileInfo.GetAllByte();
-        
-        System.Console.WriteLine(image_BMP.Read(image_BMP.Name).Length);
     }
 }
