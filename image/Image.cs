@@ -54,7 +54,6 @@ public class Image
 
     protected void BinWrite(ref byte[] data, string name)
     {
-
         using (FileStream fs = new FileStream(Path(name), FileMode.Append))
         {
             using (BinaryWriter w = new BinaryWriter(fs))
@@ -67,8 +66,19 @@ public class Image
         }
     }
 
-    protected byte Read()
+    public byte[] Read(string name)
     {
-        return new byte();
+        try
+        {
+            using FileStream file = File.Open(Path(name), FileMode.Open);
+            byte[] byteArray = new byte[file.Length];
+            return byteArray;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Exaption Read func");
+            Console.WriteLine(ex);
+        }
+        return [];
     }
 }
