@@ -1,7 +1,7 @@
 using System.Text;
 namespace img_app;
 
-class ImageP3_PPM : Image
+class ImageP3_PPM : File
 {
     readonly RGB_Pixel pixel = new();
     private string _name = "image.ppm";

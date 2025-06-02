@@ -14,7 +14,7 @@ public class GetFileInfo{
     public void GetAllByte(){
         Console.WriteLine($"{_path}");
         try{
-            using (FileStream fstream = File.OpenRead(_path))
+            using (FileStream fstream = System.IO.File.OpenRead(_path))
             {
                 byte[] buffer = new byte[fstream.Length];
                 fstream.Read(buffer, 0, buffer.Length);
@@ -48,7 +48,7 @@ public class GetFileInfo{
     {
         try
         {
-            using FileStream fs = File.Create(_path.Replace("bmp", "txt"));
+            using FileStream fs = System.IO.File.Create(_path.Replace("bmp", "txt"));
             byte[] info = new UTF8Encoding(true).GetBytes(data);
             fs.Write(info, 0, info.Length);
         }

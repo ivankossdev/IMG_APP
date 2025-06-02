@@ -1,7 +1,7 @@
 using System.Text;
 namespace img_app;
 
-class ImageP1_PBM : Image{
+class ImageP1_PBM : File{
 
     private string _name = "image.pbm";
 

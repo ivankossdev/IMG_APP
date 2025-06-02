@@ -1,7 +1,7 @@
 using System.Text;
 namespace img_app;
 
-class ImageP5_PGM : Image
+class ImageP5_PGM : File
 {
     RGB_Pixel pixel = new();
     private string _name = "image.pgm";

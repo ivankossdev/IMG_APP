@@ -1,7 +1,7 @@
 using System.Text;
 namespace img_app;
 
-public class Image
+public class File
 {
     private string _name = "image";
     public string Name
@@ -10,7 +10,7 @@ public class Image
         set => _name = value;
     }
 
-    public Image()
+    public File()
     {
         if (!CheckFolder()) Directory.CreateDirectory($"{Directory.GetCurrentDirectory()}/example/");
     }
@@ -42,7 +42,7 @@ public class Image
     {
         try
         {
-            using FileStream fs = File.Create(Path(name));
+            using FileStream fs = System.IO.File.Create(Path(name));
             byte[] info = new UTF8Encoding(true).GetBytes(data);
             fs.Write(info, 0, info.Length);
         }
@@ -70,7 +70,7 @@ public class Image
     {
         try
         {
-            using FileStream file = File.Open(Path(name), FileMode.Open);
+            using FileStream file = System.IO.File.Open(Path(name), FileMode.Open);
             byte[] byteArray = new byte[file.Length];
             return byteArray;
         }

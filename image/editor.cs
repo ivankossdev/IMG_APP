@@ -1,6 +1,6 @@
 namespace img_app;
 
-public class Editor : Image
+public class Editor : File
 {
     
 }
