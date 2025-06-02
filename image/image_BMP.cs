@@ -1,7 +1,7 @@
 using System.Text;
 namespace img_app;
 
-class Image_BMP : File
+class Image_BMP : Image
 {
     private string _name = "image.bmp";
     private int AppendBytes = 0;
@@ -12,7 +12,7 @@ class Image_BMP : File
         set => _name = value + ".bmp";
     }
 
-    public void CreateBMP(int width, int height)
+    public void Create(int width, int height)
     {
         byte[] res = HeaderFile(width, height);
         byte[] body = Body(ref res);
@@ -60,24 +60,5 @@ class Image_BMP : File
             InsertWord(ref _array, lenWord, c, (uint)AppendBytes, 0xff, 0xff, 0xff);
 
         return _array;
-    }
-
-    private static void InsertData(uint size, ref byte[] array, int startPosition, int stopPosition)
-    {
-        for (int i = startPosition, i_ = 0; i <= stopPosition; i++, i_++)
-        {
-            array[i] = (byte)((size >> (8 * i_)) & 0xff);
-        }
-    }
-
-    private static uint GetData(ref byte[] array, int startPosition, int stopPosition)
-    {
-        uint data = 0;
-        for (int i = startPosition, i_ = 0; i <= stopPosition; i++, i_++)
-        {
-            data |= (uint)array[i] << (8 * i_);
-        }
-
-        return data;
     }
 }

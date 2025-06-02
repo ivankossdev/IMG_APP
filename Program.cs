@@ -14,7 +14,7 @@ class Program
             Name = $"image_{w}x{h}"
         };
         
-        image_BMP.CreateBMP(w, h);
+        image_BMP.Create(w, h);
 
         Editor editor = new()
         {
