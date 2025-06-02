@@ -57,22 +57,9 @@ class Image_BMP : File
             _array[i] = array[i];
 
         for (uint c = 0; c < h; c++)
-            InsertWord(ref _array, lenWord, c, 0xff, 0xff, 0xff);
+            InsertWord(ref _array, lenWord, c, (uint)AppendBytes, 0xff, 0xff, 0xff);
 
         return _array;
-    }
-
-    private void InsertWord(ref byte[] array, uint lenWord, uint c, byte blue, byte green, byte red )
-    {
-        uint _lenWord = lenWord - (uint)AppendBytes + 54;
-        c = lenWord * c;
-
-        for (uint i = 54 + c; i < _lenWord + c; i += 3)
-        {
-            array[i] = blue; 
-            array[i + 1] = green;
-            array[i + 2] = red;
-        }
     }
 
     private static void InsertData(uint size, ref byte[] array, int startPosition, int stopPosition)

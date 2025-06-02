@@ -23,8 +23,8 @@ class Program
 
         editor.CreateRandom();
 
-        // GetFileInfo getFileInfo = new();
-        // getFileInfo.Name = $"example/image_{w}x{h}.bmp";
-        // getFileInfo.GetAllByte();
+        GetFileInfo getFileInfo = new();
+        getFileInfo.Name = $"example/image_{w}x{h}.bmp";
+        getFileInfo.GetAllByte();
     }
 }
