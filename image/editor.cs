@@ -9,7 +9,7 @@ public class Editor : File
         return str.Length > 0 ? str[^1] : $"File not found type";
     }
 
-    public void AppendLine()
+    public void AddLine()
     {
         string fileType = GetFileType();
         switch (fileType)
@@ -21,7 +21,7 @@ public class Editor : File
                 uint lenWord = w * 3 + appendBytes;
                 Image.InsertWord(ref data, lenWord, 0, appendBytes, 0x00, 0x00, 0xff);
                 Image.InsertWord(ref data, lenWord, 10, appendBytes, 0xff, 0x00, 0x00);
-                BinWrite(ref data, NewName(Name, "Rand"));
+                BinWrite(ref data, RenameFile(Name, "Rand"));
                 break;
 
             default:
@@ -29,9 +29,5 @@ public class Editor : File
                 break;
         }
     }
-    protected static string NewName(string Name, string add)
-    {
-        string[] temp = Name.Split('.');
-        return $"{temp[0]}_{add}.{temp[1]}";
-    }
+
 }

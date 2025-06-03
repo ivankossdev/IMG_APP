@@ -13,7 +13,7 @@ class Program
         {
             Name = $"image_{w}x{h}"
         };
-        
+
         image_BMP.Create(w, h);
 
         Editor editor = new()
@@ -21,7 +21,7 @@ class Program
             Name = image_BMP.Name
         };
 
-        editor.AppendLine();
+        editor.AddLine();
 
         GetFileInfo getFileInfo = new();
         getFileInfo.Name = $"example/image_{w}x{h}.bmp";

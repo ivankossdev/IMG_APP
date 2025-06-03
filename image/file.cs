@@ -15,7 +15,13 @@ public class File
         if (!CheckFolder()) Directory.CreateDirectory($"{Directory.GetCurrentDirectory()}/example/");
     }
 
-    public bool CheckFolder()
+    protected static string RenameFile(string Name, string add)
+    {
+        string[] temp = Name.Split('.');
+        return $"{temp[0]}_{add}.{temp[1]}";
+    }
+
+    public static bool CheckFolder()
     {
         foreach (string s in Directory.GetDirectories(Directory.GetCurrentDirectory()))
         {
@@ -24,7 +30,7 @@ public class File
         return false;
     }
 
-    public bool CheckFolder(string folder)
+    public static bool CheckFolder(string folder)
     {
         foreach (string s in Directory.GetDirectories(Directory.GetCurrentDirectory()))
         {
@@ -33,7 +39,7 @@ public class File
         return false;
     }
 
-    public string Path(string name)
+    public static string Path(string name)
     {
         return $"{Directory.GetCurrentDirectory()}/example/{name}";
     }
@@ -52,7 +58,7 @@ public class File
         }
     }
 
-    protected void BinWrite(ref byte[] data, string name)
+    protected static void BinWrite(ref byte[] data, string name)
     {
         using (FileStream fs = new FileStream(Path(name), FileMode.Append))
         {
@@ -66,7 +72,7 @@ public class File
         }
     }
 
-    protected byte[] Read(string name)
+    protected static byte[] Read(string name)
     {
         try
         {
