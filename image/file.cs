@@ -72,6 +72,8 @@ public class File
         {
             using FileStream file = System.IO.File.Open(Path(name), FileMode.Open);
             byte[] byteArray = new byte[file.Length];
+            file.Read(byteArray, 0, byteArray.Length);
+            
             return byteArray;
         }
         catch (Exception ex)

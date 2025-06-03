@@ -14,7 +14,8 @@ public class Editor : File
         switch (fileType)
         {
             case "bmp":
-                System.Console.WriteLine("Detectep bmp file");
+                byte[] data = Read(Name);
+                System.Console.WriteLine($"Detectep bmp {Name} file width {Image.GetData(ref data, 18, 21)}");
                 break;
 
             default:

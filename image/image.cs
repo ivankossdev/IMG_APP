@@ -2,7 +2,7 @@ namespace img_app;
 
 class Image : File
 {
-    protected void InsertWord(ref byte[] array, uint lenWord, uint c, uint AppendBytes, byte blue, byte green, byte red)
+    public static void InsertWord(ref byte[] array, uint lenWord, uint c, uint AppendBytes, byte blue, byte green, byte red)
     {
         uint _lenWord = lenWord - AppendBytes + 54;
         c = lenWord * c;
@@ -15,7 +15,7 @@ class Image : File
         }
     }
     
-    protected void InsertWord(ref byte[] array, uint lenWord, uint c, byte blue, byte green, byte red)
+    public static void InsertWord(ref byte[] array, uint lenWord, uint c, byte blue, byte green, byte red)
     {
         c = lenWord * c;
 
@@ -27,7 +27,7 @@ class Image : File
         }
     }
     
-    protected static void InsertData(uint size, ref byte[] array, int startPosition, int stopPosition)
+    public static void InsertData(uint size, ref byte[] array, int startPosition, int stopPosition)
     {
         for (int i = startPosition, i_ = 0; i <= stopPosition; i++, i_++)
         {
@@ -35,7 +35,7 @@ class Image : File
         }
     }
 
-    protected static uint GetData(ref byte[] array, int startPosition, int stopPosition)
+    public static uint GetData(ref byte[] array, int startPosition, int stopPosition)
     {
         uint data = 0;
         for (int i = startPosition, i_ = 0; i <= stopPosition; i++, i_++)
