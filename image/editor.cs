@@ -15,7 +15,12 @@ public class Editor : File
         {
             case "bmp":
                 byte[] data = Read(Name);
-                System.Console.WriteLine($"Detectep bmp {Name} file width {Image.GetData(ref data, 18, 21)}");
+                uint w = Image.GetData(ref data, 18, 21);
+                uint appendBytes = w % 4;
+                uint lenWord = w * 3 + appendBytes; 
+                Image.InsertWord(ref data, lenWord, 1, appendBytes, 0x7f, 0x7f, 0x7f);
+                // BinWrite(ref data, Name);
+                System.Console.WriteLine($"Detectep bmp {Name} file width {w} {appendBytes} {lenWord}");
                 break;
 
             default:
