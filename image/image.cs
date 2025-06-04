@@ -2,28 +2,28 @@ namespace img_app;
 
 class Image : File
 {
-    public static void InsertWord(ref byte[] array, uint lenWord, uint c, uint AppendBytes, byte blue, byte green, byte red)
+    public static void InsertWord(ref byte[] array, uint lenWord, uint c, uint AppendBytes, byte[] pixel)
     {
         uint _lenWord = lenWord - AppendBytes + 54;
         c = lenWord * c;
 
         for (uint i = 54 + c; i < _lenWord + c; i += 3)
         {
-            array[i] = blue;
-            array[i + 1] = green;
-            array[i + 2] = red;
+            array[i] = pixel[0];     // blue
+            array[i + 1] = pixel[1]; // green
+            array[i + 2] = pixel[2]; // red
         }
     }
     
-    public static void InsertWord(ref byte[] array, uint lenWord, uint c, byte blue, byte green, byte red)
+    public static void InsertWord(ref byte[] array, uint lenWord, uint c, byte[] pixel)
     {
         c = lenWord * c;
 
         for (uint i =+ c; i < lenWord + c; i += 3)
         {
-            array[i] = blue;
-            array[i + 1] = green;
-            array[i + 2] = red;
+            array[i] = pixel[0];     // blue
+            array[i + 1] = pixel[1]; // green
+            array[i + 2] = pixel[2]; // red
         }
     }
     

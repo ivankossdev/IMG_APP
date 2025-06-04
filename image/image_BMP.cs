@@ -64,7 +64,7 @@ class Image_BMP : Image
             _array[i] = array[i];
 
         for (uint c = 0; c < h; c++)
-            InsertWord(ref _array, lenWord, c, (uint)AppendBytes, 0xff, 0xff, 0xff);
+            InsertWord(ref _array, lenWord, c, (uint)AppendBytes, [ 0xff, 0xff, 0xff ]);
 
         return _array;
     }

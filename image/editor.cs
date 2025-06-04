@@ -22,12 +22,12 @@ public class Editor : File
                 InfoBMP infoBMP = new(w);
                 Random random = new();
 
-                Image.InsertWord(ref data, infoBMP.LenghtWord, 0, infoBMP.AppBytes, 0x00, 0x00, 0xff);
+                Image.InsertWord(ref data, infoBMP.LenghtWord, 0, infoBMP.AppBytes, [ 0x00, 0x00, 0xff ]);
 
                 for (int i = 0; i < 10; i++)
-                    Image.InsertWord(ref data, infoBMP.LenghtWord, (uint)random.Next(0, (int)h - 2), infoBMP.AppBytes, 0xff, 0x00, 0x00);
+                    Image.InsertWord(ref data, infoBMP.LenghtWord, (uint)random.Next(0, (int)h - 2), infoBMP.AppBytes, [ 0xff, 0x00, 0x00 ]);
 
-                Image.InsertWord(ref data, infoBMP.LenghtWord, h - 1, infoBMP.AppBytes, 0x00, 0xff, 0x00);
+                Image.InsertWord(ref data, infoBMP.LenghtWord, h - 1, infoBMP.AppBytes, [ 0x00, 0xff, 0x00 ]);
                 
                 BinWrite(ref data, RenameFile(Name, "Rand"));
                 break;
