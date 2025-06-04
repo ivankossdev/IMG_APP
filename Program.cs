@@ -23,8 +23,10 @@ class Program
 
         editor.AddLine();
 
-        GetFileInfo getFileInfo = new();
-        getFileInfo.Name = $"example/image_{w}x{h}.bmp";
+        GetFileInfo getFileInfo = new()
+        {
+            Name = $"example/image_{w}x{h}.bmp"
+        };
         getFileInfo.GetAllByte();
     }
 }
