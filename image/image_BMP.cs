@@ -1,6 +1,14 @@
 using System.Text;
 namespace img_app;
 
+struct InfoBMP(uint _Lenght, uint _LenghtWord)
+{
+    public uint Lenght = _Lenght;
+    public uint LenghtWord = _LenghtWord;
+    public uint Height;
+    public uint Width;
+}
+
 class Image_BMP : Image
 {
     private string _name = "image.bmp";
