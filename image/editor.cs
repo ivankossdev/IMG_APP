@@ -3,6 +3,7 @@ namespace img_app;
 
 public class Editor : File
 {
+    readonly RGB_Pixel rgb_Pixel = new();
     protected string GetFileType()
     {
         string[] str = Name.Split('.');
@@ -20,22 +21,16 @@ public class Editor : File
                 uint h = Image.GetData(ref data, 22, 25);
 
                 InfoBMP infoBMP = new(w);
-                Random random = new();
 
-                Image.InsertWord(ref data, infoBMP.LenghtWord, 0, infoBMP.AppBytes, [ 0x00, 0x00, 0xff ]);
-                RGB_Pixel rgb_Pixel = new();
-
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < h - 1; i++)
                 {
-                    Image.InsertWord(ref data, infoBMP.LenghtWord, (uint)random.Next(0, (int)h - 2), infoBMP.AppBytes, rgb_Pixel.PixelByte());
+                    Image.InsertWord(ref data, infoBMP.LenghtWord, (uint)i, infoBMP.AppBytes, rgb_Pixel.PixelByte());
                 }
-
-                Image.InsertWord(ref data, infoBMP.LenghtWord, h - 1, infoBMP.AppBytes, [ 0x00, 0xff, 0x00 ]);
                 
                 BinWrite(ref data, RenameFile(Name, "Rand"));
                 break;
             default:
-                System.Console.WriteLine(fileType);
+                Console.WriteLine(fileType);
                 break;
         }
     }
