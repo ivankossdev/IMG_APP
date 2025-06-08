@@ -2,9 +2,9 @@ namespace img_app;
 
 class Image
 {
-    public static void InsertWord(ref byte[] array, uint lenWord, uint c, uint AppendBytes, byte[] pixel)
+    public static void InsertWord(ref byte[] array, uint lenWord, uint c, uint appendBytes, byte[] pixel)
     {
-        uint _lenWord = lenWord - AppendBytes + 54;
+        uint _lenWord = lenWord - appendBytes + 54;
         c = lenWord * c;
 
         for (uint i = 54 + c; i < _lenWord + c; i += 3)
@@ -14,9 +14,16 @@ class Image
             array[i + 2] = pixel[2]; // red
         }
     }
-    public static void InsertPixel(ref byte[] array, byte[] pixel, uint lenWord, uint appendBytes)
+    public static void InsertPixel(ref byte[] array, byte[] pixel, uint lenWord, uint appendBytes, uint xPos, uint yPos)
     {
-        
+        uint _lenWord = lenWord - appendBytes + 54;
+        xPos += 54 + xPos * 2;
+        uint pixelPos = xPos;
+
+        array[pixelPos] = pixel[0];     // blue
+        array[pixelPos + 1] = pixel[1]; // green
+        array[pixelPos + 2] = pixel[2]; // red
+        System.Console.WriteLine($"{pixelPos} {lenWord} {_lenWord}");
     }
 
     public static void InsertData(uint size, ref byte[] array, int startPosition, int stopPosition)
