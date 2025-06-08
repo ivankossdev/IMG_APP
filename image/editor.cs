@@ -27,9 +27,12 @@ public class Editor : File
                     Image.InsertWord(ref data, infoBMP.LenghtWord, (uint)i, infoBMP.AppBytes, rgb_Pixel.PixelByte());
                 }
 
-                Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, infoBMP.AppBytes, 0, 0);
-                Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, infoBMP.AppBytes, 1, 0);
-                Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, infoBMP.AppBytes, 2, 0);
+                Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, 0, 0);
+                Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, 1, 0);
+                Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, 2, 0);
+                Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, 0, 1);
+                Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, 1, 1);
+                Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, 0, 2);
                 
                 BinWrite(ref data, RenameFile(Name, "Rand"));
                 break;

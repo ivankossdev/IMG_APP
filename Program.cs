@@ -28,5 +28,7 @@ class Program
             Name = $"example/image_{w}x{h}.bmp"
         };
         getFileInfo.GetAllByte();
+        // getFileInfo.Name = $"example/image_{w}x{h}_Rand.bmp";
+        // getFileInfo.GetAllByte();
     }
 }

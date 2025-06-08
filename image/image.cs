@@ -14,16 +14,14 @@ class Image
             array[i + 2] = pixel[2]; // red
         }
     }
-    public static void InsertPixel(ref byte[] array, byte[] pixel, uint lenWord, uint appendBytes, uint xPos, uint yPos)
+    public static void InsertPixel(ref byte[] array, byte[] pixel, uint lenWord, uint xPos, uint yPos)
     {
-        uint _lenWord = lenWord - appendBytes + 54;
         xPos += 54 + xPos * 2;
-        uint pixelPos = xPos;
+        uint pixelPos = xPos + lenWord * yPos;
 
         array[pixelPos] = pixel[0];     // blue
         array[pixelPos + 1] = pixel[1]; // green
         array[pixelPos + 2] = pixel[2]; // red
-        System.Console.WriteLine($"{pixelPos} {lenWord} {_lenWord}");
     }
 
     public static void InsertData(uint size, ref byte[] array, int startPosition, int stopPosition)
