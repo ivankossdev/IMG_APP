@@ -44,7 +44,7 @@ public class File
         return $"{Directory.GetCurrentDirectory()}/example/{name}";
     }
 
-    protected void Write(string data, string name)
+    protected static void Write(string data, string name)
     {
         try
         {
@@ -58,7 +58,7 @@ public class File
         }
     }
 
-    protected static void BinWrite(ref byte[] data, string name)
+    public static void BinWrite(ref byte[] data, string name)
     {
         using (FileStream fs = new FileStream(Path(name), FileMode.Append))
         {

@@ -1,6 +1,6 @@
 namespace img_app;
 
-class Image : File
+class Image
 {
     public static void InsertWord(ref byte[] array, uint lenWord, uint c, uint AppendBytes, byte[] pixel)
     {
@@ -17,18 +17,6 @@ class Image : File
     public static void InsertPixel(ref byte[] array, byte[] pixel, uint lenWord, uint appendBytes)
     {
         
-    }
-
-    public static void InsertWord(ref byte[] array, uint lenWord, uint c, byte[] pixel)
-    {
-        c = lenWord * c;
-
-        for (uint i = +c; i < lenWord + c; i += 3)
-        {
-            array[i] = pixel[0];     // blue
-            array[i + 1] = pixel[1]; // green
-            array[i + 2] = pixel[2]; // red
-        }
     }
 
     public static void InsertData(uint size, ref byte[] array, int startPosition, int stopPosition)

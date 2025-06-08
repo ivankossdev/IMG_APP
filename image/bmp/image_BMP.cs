@@ -6,7 +6,8 @@ class Image_BMP : Image
     private string _name = "image.bmp";
     private int AppendBytes = 0;
 
-    public new string Name
+    // public new string Name
+    public string Name
     {
         get => _name;
         set => _name = value + ".bmp";
@@ -16,7 +17,7 @@ class Image_BMP : Image
     {
         byte[] res = HeaderFile(width, height);
         byte[] body = Body(ref res);
-        BinWrite(ref body, Name);
+        File.BinWrite(ref body, Name);
     }
 
     private byte[] HeaderFile(int width, int height)
