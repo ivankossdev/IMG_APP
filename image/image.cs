@@ -14,19 +14,23 @@ class Image : File
             array[i + 2] = pixel[2]; // red
         }
     }
-    
+    public static void InsertPixel(ref byte[] array, byte[] pixel, uint lenWord, uint appendBytes)
+    {
+        
+    }
+
     public static void InsertWord(ref byte[] array, uint lenWord, uint c, byte[] pixel)
     {
         c = lenWord * c;
 
-        for (uint i =+ c; i < lenWord + c; i += 3)
+        for (uint i = +c; i < lenWord + c; i += 3)
         {
             array[i] = pixel[0];     // blue
             array[i + 1] = pixel[1]; // green
             array[i + 2] = pixel[2]; // red
         }
     }
-    
+
     public static void InsertData(uint size, ref byte[] array, int startPosition, int stopPosition)
     {
         for (int i = startPosition, i_ = 0; i <= stopPosition; i++, i_++)
@@ -45,4 +49,5 @@ class Image : File
 
         return data;
     }
+
 }
