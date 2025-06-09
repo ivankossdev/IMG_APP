@@ -20,6 +20,8 @@ public class Editor : File
                 editBMP.FillRandLines();
                 editBMP.AddPixels();
                 BinWrite(ref data, RenameFile(Name, "Rand"));
+                editBMP.AddRandomPixels();
+                BinWrite(ref data, RenameFile(Name, "Rand_1"));
                 break;
             default:
                 Console.WriteLine(fileType);

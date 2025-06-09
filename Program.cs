@@ -8,7 +8,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        const int w = 82, h = 64;
+        const int w = 640, h = 480;
         ImageBMP image_BMP = new()
         {
             Name = $"image_{w}x{h}"
