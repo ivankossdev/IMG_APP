@@ -1,6 +1,6 @@
 namespace img_app;
 
-struct InfoBMP(uint _Width)
+public struct InfoBMP(uint _Width)
 {
     public uint Width = _Width;
     public readonly uint AppBytes => Width % 4;

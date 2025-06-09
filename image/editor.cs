@@ -21,6 +21,7 @@ public class Editor : File
                 uint h = Image.GetData(ref data, 22, 25);
 
                 InfoBMP infoBMP = new(w);
+                EditBMP editBMP = new(infoBMP);
 
                 for (int i = 0; i < h - 1; i++)
                 {
@@ -33,6 +34,8 @@ public class Editor : File
                 Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, 0, 1);
                 Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, 1, 1);
                 Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, 0, 2);
+
+                editBMP.Inf();
                 
                 BinWrite(ref data, RenameFile(Name, "Rand"));
                 break;
