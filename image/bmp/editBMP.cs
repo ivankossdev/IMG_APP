@@ -24,20 +24,9 @@ public class EditBMP
 
     public void FillLinesYCord()
     {
-        for(uint _w = 0; _w < w; _w++)
-            for (uint _h = 0; _h < h; _h++)
+        for(uint _w = w / 2; _w < w; _w++)
+            for (uint _h = h / 2; _h < h; _h++)
                 Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, _w, _h);
-    }
-
-    public void AddPixels()
-    {
-        Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, 0, 0);
-        Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, 1, 0);
-        Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, 2, 0);
-        Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, 0, 1);
-        Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, 1, 1);
-        Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, 0, 2);
-        Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, 0, 2);
     }
 
     public void AddRandomPixels()
@@ -46,9 +35,9 @@ public class EditBMP
 
         for (uint i = 0; i < h; i++)
         {
-            for(uint _i = 0; _i < w - 1; _i++)
+            for(uint _i = 0; _i < w; _i++)
                 Image.InsertPixel(ref data, rgb_Pixel.PixelByte(), infoBMP.LenghtWord,
-                                 (uint)random.Next(0, (int)w - 1), (uint)random.Next(0, (int)i));
+                                 (uint)random.Next(0, (int)w), (uint)random.Next(0, (int)i));
         }
     }
 }

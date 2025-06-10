@@ -19,7 +19,6 @@ public class Editor : File
                 EditBMP editBMP = new(ref data);
                 editBMP.FillLinesXCord();
                 editBMP.FillLinesYCord();
-                editBMP.AddPixels();
                 BinWrite(ref data, RenameFile(Name, "Rand"));
                 editBMP.AddRandomPixels();
                 BinWrite(ref data, RenameFile(Name, "Rand_1"));
