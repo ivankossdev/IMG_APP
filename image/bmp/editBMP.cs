@@ -22,6 +22,13 @@ public class EditBMP
         }
     }
 
+    public void FillLinesYCord()
+    {
+        for(uint _w = 0; _w < w; _w++)
+            for (uint _h = 0; _h < h; _h++)
+                Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, _w, _h);
+    }
+
     public void AddPixels()
     {
         Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, 0, 0);
