@@ -58,7 +58,7 @@ public class File
         }
     }
 
-    public static void BinWrite(ref byte[] data, string name)
+    public void BinWrite(ref byte[] data, string name)
     {
         using (FileStream fs = new FileStream(Path(name), FileMode.Append))
         {
