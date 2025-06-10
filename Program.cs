@@ -21,7 +21,7 @@ class Program
             Name = image_BMP.Name
         };
 
-        editor.AddLine();
+        editor.AddLineXCord();
 
         GetFileInfo getFileInfo = new()
         {

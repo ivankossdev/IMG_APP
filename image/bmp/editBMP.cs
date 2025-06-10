@@ -14,7 +14,7 @@ public class EditBMP
         infoBMP = new(w);
     }
     RGB_Pixel rgb_Pixel = new();
-    public void FillRandLines()
+    public void FillLinesXCord()
     {
         for (int i = 0; i < h; i++)
         {
@@ -40,8 +40,8 @@ public class EditBMP
         for (uint i = 0; i < h; i++)
         {
             for(uint _i = 0; _i < w - 1; _i++)
-                Image.InsertPixel(ref data, rgb_Pixel.PixelByte(), infoBMP.LenghtWord, (uint)random.Next(0, (int)w - 1) ,
-                                  (uint)random.Next(0, (int)i));
+                Image.InsertPixel(ref data, rgb_Pixel.PixelByte(), infoBMP.LenghtWord,
+                                 (uint)random.Next(0, (int)w - 1), (uint)random.Next(0, (int)i));
         }
     }
 }

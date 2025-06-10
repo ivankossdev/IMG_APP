@@ -9,7 +9,7 @@ public class Editor : File
         return str.Length > 0 ? str[^1] : $"File not found type";
     }
 
-    public void AddLine()
+    public void AddLineXCord()
     {
         string fileType = GetFileType();
         switch (fileType)
@@ -17,7 +17,7 @@ public class Editor : File
             case "bmp":
                 byte[] data = Read(Name);
                 EditBMP editBMP = new(ref data);
-                editBMP.FillRandLines();
+                editBMP.FillLinesXCord();
                 editBMP.AddPixels();
                 BinWrite(ref data, RenameFile(Name, "Rand"));
                 editBMP.AddRandomPixels();
@@ -28,4 +28,6 @@ public class Editor : File
                 break;
         }
     }
+
+
 }
