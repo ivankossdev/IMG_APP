@@ -24,7 +24,7 @@ public class EditBMP
 
     public void FillLinesYCord()
     {
-        for(uint _w = w / 2; _w < w; _w++)
+        for (uint _w = w / 2; _w < w; _w++)
             for (uint _h = h / 2; _h < h; _h++)
                 Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, _w, _h);
     }
@@ -35,9 +35,14 @@ public class EditBMP
 
         for (uint i = 0; i < h; i++)
         {
-            for(uint _i = 0; _i < w; _i++)
+            for (uint _i = 0; _i < w; _i++)
                 Image.InsertPixel(ref data, rgb_Pixel.PixelByte(), infoBMP.LenghtWord,
                                  (uint)random.Next(0, (int)w), (uint)random.Next(0, (int)i));
         }
+    }
+
+    public void AddLine(byte[] Pixel, int Length, int x, int y)
+    {
+        
     }
 }
