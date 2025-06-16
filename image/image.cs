@@ -2,12 +2,12 @@ namespace img_app;
 
 class Image
 {
-    public static void InsertWord(ref byte[] array, uint lenWord, uint c, uint appendBytes, byte[] pixel)
+    public static void InsertWord(ref byte[] array, uint lenWord, uint count, uint appendBytes, byte[] pixel)
     {
         uint _lenWord = lenWord - appendBytes + 54;
-        c = lenWord * c;
+        count = lenWord * count;
 
-        for (uint i = 54 + c; i < _lenWord + c; i += 3)
+        for (uint i = 54 + count; i < _lenWord + count; i += 3)
         {
             array[i] = pixel[0];     // blue
             array[i + 1] = pixel[1]; // green

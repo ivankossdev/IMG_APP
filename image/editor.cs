@@ -21,6 +21,8 @@ public class Editor : File
                 editBMP.FillLinesYCord();
                 BinWrite(ref data, RenameFile(Name, "Rand"));
                 editBMP.AddRandomPixels();
+                editBMP.AddXLine([0x00, 0x00, 0xff], 1, 0, 10);
+                editBMP.AddXLine([0x00, 0x00, 0xff], 1, 10, 100);
                 BinWrite(ref data, RenameFile(Name, "Rand_1"));
                 break;
             default:
@@ -28,6 +30,4 @@ public class Editor : File
                 break;
         }
     }
-
-
 }
