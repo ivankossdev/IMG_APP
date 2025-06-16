@@ -23,7 +23,7 @@ public class EditBMP
     {
         for (uint _w = w / 2; _w < w; _w++)
             for (uint _h = h / 2; _h < h; _h++)
-                Image.InsertPixel(ref data, rgb_Pixel.PixelByte(), infoBMP.LenghtWord, _w, _h);
+                Image.InsertPixel(ref data, rgb_Pixel.PixelByte(0, 0, 255), infoBMP.LenghtWord, _w, _h);
     }
     public void AddXLine(byte[] Pixel, uint xPos, uint yPos, uint Length)
     {
