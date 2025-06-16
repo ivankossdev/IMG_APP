@@ -23,13 +23,19 @@ public class EditBMP
     {
         for (uint _w = w / 2; _w < w; _w++)
             for (uint _h = h / 2; _h < h; _h++)
-                Image.InsertPixel(ref data, [0xff, 0x00, 0x00], infoBMP.LenghtWord, _w, _h);
+                Image.InsertPixel(ref data, rgb_Pixel.PixelByte(), infoBMP.LenghtWord, _w, _h);
     }
     public void AddXLine(byte[] Pixel, uint xPos, uint yPos, uint Length)
     {
         if (Length > h) Length = h;
-        for (uint x_ = xPos; x_ < Length; x_++)
-            Image.InsertPixel(ref data, Pixel, infoBMP.LenghtWord, x_, yPos);
+        for (uint x = xPos; x < Length; x++)
+            Image.InsertPixel(ref data, Pixel, infoBMP.LenghtWord, x, yPos);
+    }
+    public void AddYLine(byte[] Pixel, uint xPos, uint yPos, uint Length)
+    {
+        if (Length > w) Length = w;
+        for (uint y = yPos; y < Length; y++)
+            Image.InsertPixel(ref data, Pixel, infoBMP.LenghtWord, xPos, y);
     }
     public void AddRandomPixels()
     {

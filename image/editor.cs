@@ -20,9 +20,13 @@ public class Editor : File
                 editBMP.FillLinesXCord();
                 editBMP.FillLinesYCord();
                 BinWrite(ref data, RenameFile(Name, "Rand"));
+
                 editBMP.AddRandomPixels();
-                editBMP.AddXLine([0x00, 0x00, 0xff], 1, 0, 10);
-                editBMP.AddXLine([0x00, 0x00, 0xff], 1, 10, 100);
+                for (uint y = 2; y <= 100; y++) {
+                    editBMP.AddYLine([0x00, 0x00, 0xff], y, y, 100);
+                }
+                editBMP.AddXLine([0x00, 0x00, 0xff], 2, 2, 100);
+                editBMP.AddYLine([0x00, 0x00, 0xff], 100, 2, 100);
                 BinWrite(ref data, RenameFile(Name, "Rand_1"));
                 break;
             default:
