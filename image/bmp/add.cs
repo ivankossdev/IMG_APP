@@ -1,20 +1,13 @@
-using System.Text;
 namespace img_app;
 
-public class Editor(string Name) : File
+public class Add(string Name) : File
 {
     private readonly string name = Name;
-    public void RandomPixels()
-    {
-        byte[] data = Read(name);
-        EditBMP editBMP = new(ref data);
-        editBMP.AddRandomPixels();
-        BinWrite(ref data, RenameFile(name, "Random Pixels"));
-    }
     public void Lines(uint Lenght)
     {
         byte[] data = Read(name);
-        EditBMP editBMP = new(ref data);
+        ServiceBMP editBMP = new(ref data);
+        
         for (uint i = 0; i < editBMP.h; i++)
         {
             editBMP.AddXLine([0x00, 0x00, 0xff], Lenght * 0, i, Lenght);
