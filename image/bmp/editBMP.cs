@@ -3,8 +3,8 @@ namespace img_app;
 public class EditBMP
 {
     private byte[] data;
-    private readonly uint w;
-    private readonly uint h;
+    public readonly uint w;
+    public readonly uint h;
     private InfoBMP infoBMP;
     public EditBMP(ref byte[] _data)
     {
@@ -13,22 +13,12 @@ public class EditBMP
         h = Image.GetData(ref data, 22, 25);
         infoBMP = new(w);
     }
-    RGB_Pixel rgb_Pixel = new();
-    public void FillLinesXCord()
-    {
-        for (uint i = 0; i < h; i++)
-            Image.InsertWord(ref data, infoBMP.LenghtWord, i, infoBMP.AppBytes, rgb_Pixel.PixelByte());
-    }
-    public void FillLinesYCord()
-    {
-        for (uint _w = w / 2; _w < w; _w++)
-            for (uint _h = h / 2; _h < h; _h++)
-                Image.InsertPixel(ref data, rgb_Pixel.PixelByte(0, 0, 255), infoBMP.LenghtWord, _w, _h);
-    }
+    readonly RGB_Pixel rgb_Pixel = new();
+
     public void AddXLine(byte[] Pixel, uint xPos, uint yPos, uint Length)
     {
         if (Length > h) Length = h;
-        for (uint x = xPos; x < Length; x++)
+        for (uint x = xPos; x < Length + xPos; x++)
             Image.InsertPixel(ref data, Pixel, infoBMP.LenghtWord, x, yPos);
     }
     public void AddYLine(byte[] Pixel, uint xPos, uint yPos, uint Length)

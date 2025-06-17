@@ -12,8 +12,9 @@ class Program
         ImageBMP image_BMP = new() { Name = $"image_{w}x{h}" };
         image_BMP.Create(w, h);
 
-        Editor editor = new(){ Name = image_BMP.Name };
-        editor.Example();
+        Editor editor = new(image_BMP.Name);
+        editor.RandomPixels();
+        editor.Lines(100);
         
         GetFileInfo getFileInfo = new() { Name = $"example/image_{w}x{h}.bmp" };
         getFileInfo.GetAllByte();

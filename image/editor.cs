@@ -1,39 +1,27 @@
 using System.Text;
 namespace img_app;
 
-public class Editor : File
+public class Editor(string Name) : File
 {
-    protected string GetFileType()
+    private readonly string name = Name;
+    public void RandomPixels()
     {
-        string[] str = Name.Split('.');
-        return str.Length > 0 ? str[^1] : $"File not found type";
+        byte[] data = Read(name);
+        EditBMP editBMP = new(ref data);
+        editBMP.AddRandomPixels();
+        BinWrite(ref data, RenameFile(name, "Random Pixels"));
     }
-
-    public void Example()
+    public void Lines(uint Lenght)
     {
-        string fileType = GetFileType();
-        switch (fileType)
+        byte[] data = Read(name);
+        EditBMP editBMP = new(ref data);
+        for (uint i = 0; i < editBMP.h; i++)
         {
-            case "bmp":
-                byte[] data = Read(Name);
-                EditBMP editBMP = new(ref data);
-                // editBMP.FillLinesXCord();
-                // editBMP.FillLinesYCord();
-                // BinWrite(ref data, RenameFile(Name, "Rand"));
-
-                // editBMP.AddRandomPixels();
-                // for (uint y = 2; y <= 100; y++) {
-                //     editBMP.AddYLine([0x00, 0x00, 0x00], y, y, 100);
-                // }
-                editBMP.AddXLine([0x00, 0x00, 0x00], 2, 2, 100);
-                editBMP.AddXLine([0x00, 0x00, 0x00], 100, 100, 100);
-
-                editBMP.AddYLine([0x00, 0x00, 0x00], 100, 2, 100);
-                BinWrite(ref data, RenameFile(Name, "Rand_1"));
-                break;
-            default:
-                Console.WriteLine(fileType);
-                break;
+            editBMP.AddXLine([0x00, 0x00, 0xff], Lenght * 0, i, Lenght);
+            editBMP.AddXLine([0xff, 0x00, 0x00], Lenght * 1, i, Lenght);
+            editBMP.AddXLine([0x00, 0xff, 0x00], Lenght * 2, i, Lenght);
         }
+
+        BinWrite(ref data, RenameFile(name, $"Line_{Lenght}"));
     }
 }
