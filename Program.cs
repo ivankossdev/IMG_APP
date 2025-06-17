@@ -9,24 +9,13 @@ class Program
     static void Main(string[] args)
     {
         const int w = 640, h = 480;
-        ImageBMP image_BMP = new()
-        {
-            Name = $"image_{w}x{h}"
-        };
-
+        ImageBMP image_BMP = new() { Name = $"image_{w}x{h}" };
         image_BMP.Create(w, h);
 
-        Editor editor = new()
-        {
-            Name = image_BMP.Name
-        };
-
-        editor.AddLineXCord();
-
-        GetFileInfo getFileInfo = new()
-        {
-            Name = $"example/image_{w}x{h}.bmp"
-        };
+        Editor editor = new(){ Name = image_BMP.Name };
+        editor.Example();
+        
+        GetFileInfo getFileInfo = new() { Name = $"example/image_{w}x{h}.bmp" };
         getFileInfo.GetAllByte();
         // getFileInfo.Name = $"example/image_{w}x{h}_Rand.bmp";
         // getFileInfo.GetAllByte();
