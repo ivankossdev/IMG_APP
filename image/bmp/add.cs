@@ -25,10 +25,8 @@ public class Add : File
     }
     public void YLines(uint Lenght)
     {
-        for (uint i = 0; i < serviceBMP.h; i++)
-        {
-            serviceBMP.AddYLine([0x00, 0x00, 0xff], serviceBMP.w / 2, i, Lenght);
-        }
+        for (uint i = 0; i < serviceBMP.w; i+=2)
+            serviceBMP.AddYLine(rGB_Pixel.PixelByte(), i, 0, Lenght);
 
         BinWrite(ref data, RenameFile(name, $"YLines_{Lenght}"));
     }
