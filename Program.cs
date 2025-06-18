@@ -13,7 +13,8 @@ class Program
         image_BMP.Create(w, h);
 
         Add add = new(image_BMP.Name);
-        add.Lines(w / 3);
+        add.XLines(w);
+        add.YLines(h);
 
         GetFileInfo getFileInfo = new() { Name = $"example/image_{w}x{h}.bmp" };
         getFileInfo.GetAllByte();

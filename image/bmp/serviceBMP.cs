@@ -15,13 +15,13 @@ public class ServiceBMP
     }
     public void AddXLine(byte[] Pixel, uint xPos, uint yPos, uint Length)
     {
-        if (Length > h) Length = h;
+        if (Length > w) Length = w;
         for (uint x = xPos; x < Length + xPos; x++)
             Image.InsertPixel(ref data, Pixel, infoBMP.LenghtWord, x, yPos);
     }
     public void AddYLine(byte[] Pixel, uint xPos, uint yPos, uint Length)
     {
-        if (Length > w) Length = w;
+        if (Length > h) Length = h;
         for (uint y = yPos; y < Length; y++)
             Image.InsertPixel(ref data, Pixel, infoBMP.LenghtWord, xPos, y);
     }
