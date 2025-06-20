@@ -8,15 +8,18 @@ class Program
 {
     static void Main(string[] args)
     {
-        const int w = 640, h = 480;
-        ImageBMP image_BMP = new() { Name = $"image_{w}x{h}" };
-        image_BMP.Create(w, h);
 
-        Add add = new(image_BMP.Name);
-        add.XLines(w);
-        add.YLines(h);
+        // const int w = 640, h = 480;
+        // ImageBMP image_BMP = new() { Name = $"image_{w}x{h}" };
+        // image_BMP.Create(w, h);
 
-        GetFileInfo getFileInfo = new() { Name = $"example/image_{w}x{h}.bmp" };
-        getFileInfo.GetAllByte();
+        // Add add = new(image_BMP.Name);
+        // add.XLines(w);
+        // add.YLines(h);
+
+        // GetFileInfo getFileInfo = new() { Name = $"example/image_{w}x{h}.bmp" };
+        // getFileInfo.GetAllByte();
+        MathEx.Example();
     }
+
 }
