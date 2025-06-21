@@ -1,14 +1,14 @@
 namespace img_app;
 
-public class MathEx
+public static class MathEx
 {
-    public static void GetAngle(int w, int h)
+    public static double GetAngle(uint w, uint h)
     {
         double angle = Math.Atan((double)h / (double)w) * 180 / Math.PI;
-        angle = Math.Round(angle);
-        Console.WriteLine(angle);
-        Console.WriteLine(180 - 90 - angle);
+        return Math.Round(angle, 2);
     }
-    // double degrees = 45;
-    // double angle = Math.PI * degrees / 180.0;
+    public static double GetRadian(double degrees)
+    {
+        return Math.Round(Math.PI * degrees / 180.0, 1);  
+    }
 }

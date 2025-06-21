@@ -25,9 +25,21 @@ public class Add : File
     }
     public void YLines(uint Lenght)
     {
-        for (uint i = 0; i < serviceBMP.w; i+=2)
+        for (uint i = 0; i < serviceBMP.w; i += 2)
             serviceBMP.AddYLine(rGB_Pixel.PixelByte(), i, 0, Lenght);
 
         BinWrite(ref data, RenameFile(name, $"YLines_{Lenght}"));
+    }
+    public void AngleLine()
+    {
+        double angle = MathEx.GetAngle(serviceBMP.w, serviceBMP.h);
+        double radian = Math.Tan(Math.PI * angle / 180.0);       
+
+        for (uint i = 0; i < serviceBMP.w; i++)
+        {
+            serviceBMP.AddYLine(rGB_Pixel.PixelByte(), i, 0, (uint)Math.Round(Math.Abs(i * radian)));
+        }
+
+        BinWrite(ref data, RenameFile(name, $"AngleLine")); 
     }
 }

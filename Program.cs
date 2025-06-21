@@ -15,10 +15,11 @@ class Program
         Add add = new(image_BMP.Name);
         add.XLines(w);
         add.YLines(h);
+        add.AngleLine();
 
         GetFileInfo getFileInfo = new() { Name = $"example/image_{w}x{h}.bmp" };
         getFileInfo.GetAllByte();
-        MathEx.GetAngle(w, h);
+
     }
 
 }
