@@ -1,7 +1,10 @@
 namespace img_app;
 
-class DataInserts
+class DataInserts : IDataInserts
 {
+    public void InsertWord() {
+        throw new Exception("Override method !!!");
+    }
     public static void InsertWord(ref byte[] array, uint lenWord, uint count, uint appendBytes, byte[] pixel)
     {
         uint _lenWord = lenWord - appendBytes + 54;
@@ -13,6 +16,10 @@ class DataInserts
             array[i + 1] = pixel[1]; // green
             array[i + 2] = pixel[2]; // red
         }
+    }
+    public void InsertPixel()
+    {
+        throw new Exception("Override method !!!");
     }
     public static void InsertPixel(ref byte[] array, byte[] pixel, uint lenWord, uint xPos, uint yPos)
     {
