@@ -1,6 +1,6 @@
 namespace img_app;
 
-class Image
+class DataInserts
 {
     public static void InsertWord(ref byte[] array, uint lenWord, uint count, uint appendBytes, byte[] pixel)
     {
