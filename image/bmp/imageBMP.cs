@@ -1,7 +1,9 @@
 using System.Text;
 namespace img_app;
 
-class ImageBMP : DataInserts
+
+
+class ImageBMP : DataInsertsBMP
 {
     private string _name = "image.bmp";
     private int AppendBytes = 0;

@@ -1,6 +1,6 @@
 namespace img_app;
 
-class DataInserts : IDataInserts
+class DataInsertsBMP : IDataInserts
 {
     public void InsertWord() {
         throw new Exception("Override method !!!");
@@ -31,6 +31,10 @@ class DataInserts : IDataInserts
         array[pixelPos + 2] = pixel[2]; // red
     }
 
+    public void InsertData()
+    {
+        throw new Exception("Override method !!!");
+    }
     public static void InsertData(uint size, ref byte[] array, int startPosition, int stopPosition)
     {
         for (int i = startPosition, i_ = 0; i <= stopPosition; i++, i_++)
