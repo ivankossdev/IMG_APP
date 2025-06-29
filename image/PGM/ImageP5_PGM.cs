@@ -3,7 +3,7 @@ namespace img_app;
 
 class ImageP5_PGM : File
 {
-    RGB_Pixel pixel = new();
+    RgbPixel pixel = new();
     private string _name = "image.pgm";
 
     public new string Name

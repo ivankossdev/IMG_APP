@@ -5,7 +5,7 @@ public class Add : File
     private readonly string name;
     private byte[] data;
     readonly ServiceBMP serviceBMP;
-    readonly RGB_Pixel rGB_Pixel = new();
+    readonly RgbPixel rGB_Pixel = new();
 
     public Add(string Name)
     {

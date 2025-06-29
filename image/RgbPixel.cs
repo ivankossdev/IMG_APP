@@ -1,6 +1,6 @@
 namespace img_app;
 
-class RGB_Pixel : Random
+class RgbPixel : Random
 {
     private int Generate(int start = 0, int stop = 256)
     {

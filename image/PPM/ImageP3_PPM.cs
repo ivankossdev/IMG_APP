@@ -3,7 +3,7 @@ namespace img_app;
 
 class ImageP3_PPM : File
 {
-    readonly RGB_Pixel pixel = new();
+    readonly RgbPixel pixel = new();
     private string _name = "image.ppm";
 
     public new string Name {
