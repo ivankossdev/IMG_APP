@@ -20,6 +20,9 @@ class Program
         GetFileInfo getFileInfo = new() { Name = $"example/image_{w}x{h}.bmp" };
         getFileInfo.GetAllByte();
 
+        ImagePNG imagePNG = new() { Name = $"image_{w}x{h}" };
+        System.Console.WriteLine(imagePNG.Name);
+
     }
 
 }
