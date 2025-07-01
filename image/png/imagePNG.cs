@@ -24,23 +24,20 @@ public class ImagePNG
         array[0] = 0x89; array[1] = 0x50; array[2] = 0x4e; array[3] = 0x47;
         array[4] = 0x0d; array[5] = 0x0a; array[6] = 0x1a; array[7] = 0x0a;
 
-        Length(ref array);
+        Length(ref array, 13);
         Type(ref array);
 
         return array;
     }
-    private void Length(ref byte[] array)
+    private void Length(ref byte[] array, int l)
     {
-        // Размер Body
-        for (int i = 8; i < 12; i++)
-        {
-            array[i] = 0x00;
-        }
+        // Длина array[8 ... 11]
+        array[11] = (byte)l;
     }
     private void Type(ref byte[] array)
     {
-        // IDAT
-        byte[] byteArray = new UTF8Encoding(true).GetBytes("IDAT");
+        // IHDR Заголовок изображения 0x49, 0x48, 0x44, 0x52
+        byte[] byteArray = new UTF8Encoding(true).GetBytes("IHDR");
 
         for (int i = 12, i_ = 0; i < 15; i++, i_++)
         {
