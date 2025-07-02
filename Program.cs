@@ -17,11 +17,14 @@ class Program
         add.YLines(h);
         add.AngleLine();
 
-        GetFileInfo getFileInfo = new() { Name = $"example/image_{w}x{h}.bmp" };
-        getFileInfo.GetAllByte();
+        GetFileInfo getFileInfoBMP = new() { Name = $"example/image_{w}x{h}.bmp" };
+        getFileInfoBMP.GetAllByte();
 
         ImagePNG imagePNG = new() { Name = $"image_{w}x{h}" };
         System.Console.WriteLine(imagePNG.Name);
+
+        // GetFileInfo getFileInfoPng = new() { Name = $"test_ex/ex_2px.png" };
+        // getFileInfoPng.GetAllByte();
 
     }
 
