@@ -25,9 +25,10 @@ class Program
 
         // GetFileInfo getFileInfoPng = new() { Name = $"test_ex/ex_2px.png" };
         // getFileInfoPng.GetAllByte();
-        Crc32 crc32 = new();
-        string hash = HashHandler.GetCRC32(crc32, "example/image_640x480.txt");
+
+        string hash = HashHandler.GetCRC32(new Crc32(), "example/image_640x480.txt");
+        System.Console.WriteLine(hash);
+        hash = HashHandler.GetCRC32(new Crc32(), [0x00, 0x01, 0x0f]);
         System.Console.WriteLine(hash);
     }
-
 }
