@@ -38,10 +38,12 @@ def create_bmp():
         file.close()        
         
 def CRC32():
-    data1 = bytearray([1, 2, 3, 4])
-    crc1 = zlib.crc32(data1)
-    print(f"CRC32 of '{data1.decode()}' (bytes): {crc1} (decimal)")
-    print(f"CRC32 of '{data1.decode()}' (bytes): {hex(crc1)} (hexadecimal)")
+    data = bytearray([1, 2, 3, 4])
+    crc1 = zlib.crc32(data)
+    s_data = ""
+    for x in data:
+        s_data += str(x)
+    print(f"CRC32: {s_data} {hex(crc1)}")
     
         
 if __name__ == "__main__":
