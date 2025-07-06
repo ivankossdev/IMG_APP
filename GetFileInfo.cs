@@ -70,8 +70,15 @@ public class GetFileInfo
     private string RenameToTXT(string fileName)
     {
         StringBuilder sb = new();
-        sb.Append(fileName.Split('.')[0]);
-        sb.Append(".txt");
+        try
+        {
+            sb.AppendFormat("{0}.txt", fileName.Split('.')[0]);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
+        
         return sb.ToString();
     }
 }

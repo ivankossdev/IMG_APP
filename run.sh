@@ -2,6 +2,7 @@
 
 rm example/*.bmp
 rm example/*.txt
+rm test_ex/*.txt
 
 clear
 if [[ "py" == "$1" ]]
