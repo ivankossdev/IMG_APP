@@ -23,8 +23,8 @@ class Program
         ImagePNG imagePNG = new() { Name = $"image_{w}x{h}" };
         System.Console.WriteLine(imagePNG.Name);
 
-        // GetFileInfo getFileInfoPng = new() { Name = $"test_ex/ex_2px.png" };
-        // getFileInfoPng.GetAllByte();
+        GetFileInfo getFileInfoPng = new() { Name = $"test_ex/ex_2px.png" };
+        getFileInfoPng.GetAllByte();
 
         string hash = HashHandler.GetCRC32(new Crc32(), "example/image_640x480.txt");
         System.Console.WriteLine(hash);

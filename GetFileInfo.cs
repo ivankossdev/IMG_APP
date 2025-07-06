@@ -1,19 +1,23 @@
 using System.Text;
 namespace img_app;
 
-public class GetFileInfo{
+public class GetFileInfo
+{
 
     private string _name = string.Empty;
     private string _path => $"{Directory.GetCurrentDirectory()}/{Name}";
-    
-    public string Name{
+
+    public string Name
+    {
         get => _name;
-        set => _name = value; 
+        set => _name = value;
     }
 
-    public void GetAllByte(){
+    public void GetAllByte()
+    {
         Console.WriteLine($"{_path}");
-        try{
+        try
+        {
             using (FileStream fstream = System.IO.File.OpenRead(_path))
             {
                 byte[] buffer = new byte[fstream.Length];
@@ -22,23 +26,27 @@ public class GetFileInfo{
                 WriteRes(res);
             }
         }
-        catch (FileNotFoundException){
+        catch (FileNotFoundException)
+        {
             Console.WriteLine("File not found");
         }
     }
 
-    private static string FormatOut(ref byte[] buffer){
+    private static string FormatOut(ref byte[] buffer)
+    {
 
         int counter = 0;
         StringBuilder sb_hex = new();
 
-        foreach(byte b in buffer){
+        foreach (byte b in buffer)
+        {
             sb_hex.AppendFormat("{0:X2} ", b);
             counter++;
-            if (counter >= 16) {
+            if (counter >= 16)
+            {
                 counter = 0;
                 sb_hex.Append('\n');
-            }            
+            }
         }
         sb_hex.Append('\n');
         return sb_hex.ToString();
@@ -48,7 +56,8 @@ public class GetFileInfo{
     {
         try
         {
-            using FileStream fs = System.IO.File.Create(_path.Replace("bmp", "txt"));
+            string path = RenameToTXT(_path);
+            using FileStream fs = System.IO.File.Create(path);
             byte[] info = new UTF8Encoding(true).GetBytes(data);
             fs.Write(info, 0, info.Length);
         }
@@ -56,5 +65,13 @@ public class GetFileInfo{
         {
             Console.WriteLine(ex.ToString());
         }
+    }
+
+    private string RenameToTXT(string fileName)
+    {
+        StringBuilder sb = new();
+        sb.Append(fileName.Split('.')[0]);
+        sb.Append(".txt");
+        return sb.ToString();
     }
 }
