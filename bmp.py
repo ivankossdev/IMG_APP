@@ -1,3 +1,5 @@
+import zlib
+
 def create_bmp():
     with open("test.bmp","w+b") as file:
         file.write(b'BM')                                    #ID field (42h, 4Dh)
@@ -34,9 +36,16 @@ def create_bmp():
         file.write(b'\x00\x00\xFF\xFF')                      #0 0 255 255 Red (Alpha: 255), Pixel (0,2)
         file.write(b'\xFF\xFF\xFF\xFF')                      #255 255 255 255 White (Alpha: 255), Pixel (0,3)
         file.close()        
+        
+def CRC32():
+    data1 = bytearray([1, 2, 3, 4])
+    crc1 = zlib.crc32(data1)
+    print(f"CRC32 of '{data1.decode()}' (bytes): {crc1} (decimal)")
+    print(f"CRC32 of '{data1.decode()}' (bytes): {hex(crc1)} (hexadecimal)")
     
         
 if __name__ == "__main__":
     print("Start")
     create_bmp()
+    CRC32()
     print("Stop")

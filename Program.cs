@@ -28,7 +28,7 @@ class Program
 
         string hash = HashHandler.GetCRC32(new Crc32(), "example/image_640x480.txt");
         System.Console.WriteLine(hash);
-        hash = HashHandler.GetCRC32(new Crc32(), [0x00, 0x01, 0x0f]);
+        hash = HashHandler.GetCRC32(new Crc32(), [1, 2, 3, 4]);
         System.Console.WriteLine(hash);
     }
 }
