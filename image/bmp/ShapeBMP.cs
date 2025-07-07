@@ -1,12 +1,12 @@
 namespace img_app;
 
-public class ServiceBMP
+public class ShapeBMP
 {
     private byte[] data;
     public readonly uint w;
     public readonly uint h;
     private InfoBMP infoBMP;
-    public ServiceBMP(ref byte[] _data)
+    public ShapeBMP(ref byte[] _data)
     {
         data = _data;
         w = DataInsertsBMP.GetData(ref data, 18, 21);

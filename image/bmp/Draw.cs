@@ -4,7 +4,7 @@ public class Draw : IDraw
 {
     private readonly string name;
     private byte[] data;
-    readonly ServiceBMP serviceBMP;
+    readonly ShapeBMP serviceBMP;
     readonly RgbPixel rGB_Pixel = new();
 
     public Draw(string Name)
