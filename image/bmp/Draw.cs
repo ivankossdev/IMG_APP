@@ -1,6 +1,6 @@
 namespace img_app;
 
-public class Draw : File
+public class Draw
 {
     private readonly string name;
     private byte[] data;
@@ -10,7 +10,7 @@ public class Draw : File
     public Draw(string Name)
     {
         name = Name;
-        data = Read(name);
+        data = File.Read(name);
         serviceBMP = new(ref data);
 
     }
@@ -21,14 +21,14 @@ public class Draw : File
             serviceBMP.AddXLine(rGB_Pixel.PixelByte(), 0, i, Lenght);
         }
 
-        BinWrite(ref data, RenameFile(name, $"XLine_{Lenght}"));
+        File.BinWrite(ref data, File.RenameFile(name, $"XLine_{Lenght}"));
     }
     public void YLines(uint Lenght)
     {
         for (uint i = 0; i < serviceBMP.w; i += 2)
             serviceBMP.AddYLine(rGB_Pixel.PixelByte(), i, 0, Lenght);
 
-        BinWrite(ref data, RenameFile(name, $"YLines_{Lenght}"));
+        File.BinWrite(ref data, File.RenameFile(name, $"YLines_{Lenght}"));
     }
     public void AngleLine()
     {
@@ -40,6 +40,6 @@ public class Draw : File
             serviceBMP.AddYLine(rGB_Pixel.PixelByte(), i, 0, (uint)Math.Round(Math.Abs(i * radian)));
         }
 
-        BinWrite(ref data, RenameFile(name, $"AngleLine")); 
+        File.BinWrite(ref data, File.RenameFile(name, $"AngleLine")); 
     }
 }

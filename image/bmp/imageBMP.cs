@@ -8,8 +8,6 @@ class ImageBMP : DataInsertsBMP
     private string _name = "image.bmp";
     private int AppendBytes = 0;
 
-    readonly File file = new();
-
     // public new string Name
     public string Name
     {
@@ -21,7 +19,7 @@ class ImageBMP : DataInsertsBMP
     {
         byte[] res = HeaderFile(width, height);
         byte[] body = Body(ref res);
-        file.BinWrite(ref body, Name);
+        File.BinWrite(ref body, Name);
     }
 
     private byte[] HeaderFile(int width, int height)

@@ -15,7 +15,7 @@ public class File
         if (!CheckFolder()) Directory.CreateDirectory($"{Directory.GetCurrentDirectory()}/example/");
     }
 
-    protected static string RenameFile(string Name, string add)
+    public static string RenameFile(string Name, string add)
     {
         string[] temp = Name.Split('.');
         return $"{temp[0]}_{add}.{temp[1]}";
@@ -58,7 +58,7 @@ public class File
         }
     }
 
-    public void BinWrite(ref byte[] data, string name)
+    public static void BinWrite(ref byte[] data, string name)
     {
         using (FileStream fs = new FileStream(Path(name), FileMode.Append))
         {
@@ -72,7 +72,7 @@ public class File
         }
     }
 
-    protected static byte[] Read(string name)
+    public static byte[] Read(string name)
     {
         try
         {

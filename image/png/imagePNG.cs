@@ -4,7 +4,6 @@ namespace img_app;
 public class ImagePNG
 {
     private string _name = "image.png";
-    readonly File file = new();
     public string Name
     {
         get => _name;
@@ -14,7 +13,7 @@ public class ImagePNG
     {
         byte[] res = HeaderFile(width, height);
         byte[] body = Body(ref res);
-        file.BinWrite(ref body, Name);
+        File.BinWrite(ref body, Name);
     }
     private byte[] HeaderFile(int width, int height)
     {
