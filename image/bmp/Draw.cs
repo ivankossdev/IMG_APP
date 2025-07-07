@@ -1,6 +1,6 @@
 namespace img_app;
 
-public class Draw
+public class Draw : IDraw
 {
     private readonly string name;
     private byte[] data;
