@@ -12,10 +12,10 @@ class Program
         ImageBMP image_BMP = new() { Name = $"image_{w}x{h}" };
         image_BMP.Create(w, h);
 
-        Add add = new(image_BMP.Name);
-        add.XLines(w);
-        add.YLines(h);
-        add.AngleLine();
+        Draw draw = new(image_BMP.Name);
+        draw.XLines(w);
+        draw.YLines(h);
+        draw.AngleLine();
 
         GetFileInfo getFileInfoBMP = new() { Name = $"example/image_{w}x{h}.bmp" };
         getFileInfoBMP.GetAllByte();

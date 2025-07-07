@@ -1,13 +1,13 @@
 namespace img_app;
 
-public class Add : File
+public class Draw : File
 {
     private readonly string name;
     private byte[] data;
     readonly ServiceBMP serviceBMP;
     readonly RgbPixel rGB_Pixel = new();
 
-    public Add(string Name)
+    public Draw(string Name)
     {
         name = Name;
         data = Read(name);
