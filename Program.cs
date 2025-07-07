@@ -16,6 +16,7 @@ class Program
         draw.XLines(w);
         draw.YLines(h);
         draw.AngleLine();
+        draw.AngleLine(10);
 
         GetFileInfo getFileInfoBMP = new() { Name = $"example/image_{w}x{h}.bmp" };
         getFileInfoBMP.GetAllByte();
@@ -26,9 +27,7 @@ class Program
         GetFileInfo getFileInfoPng = new() { Name = $"test_ex/ex_2px.png" };
         getFileInfoPng.GetAllByte();
 
-        string hash = HashHandler.GetCRC32(new Crc32(), "example/image_640x480.txt");
-        System.Console.WriteLine(hash);
-        hash = HashHandler.GetCRC32(new Crc32(), [1, 2, 3, 4]);
+        string hash = HashHandler.GetCRC32(new Crc32(), [1, 2, 3, 4]);
         System.Console.WriteLine(hash);
     }
 }

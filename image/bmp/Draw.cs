@@ -33,13 +33,25 @@ public class Draw : IDraw
     public void AngleLine()
     {
         double angle = MathEx.GetAngle(serviceBMP.w, serviceBMP.h);
-        double radian = Math.Tan(Math.PI * angle / 180.0);       
+        double radian = Math.Tan(Math.PI * angle / 180.0);
 
         for (uint i = 0; i < serviceBMP.w; i++)
         {
             serviceBMP.AddYLine(rGB_Pixel.PixelByte(), i, 0, (uint)Math.Round(Math.Abs(i * radian)));
         }
 
-        File.BinWrite(ref data, File.RenameFile(name, $"AngleLine")); 
+        File.BinWrite(ref data, File.RenameFile(name, $"AngleLine"));
+    }
+
+    public void AngleLine(double angle)
+    {
+        double radian = Math.Tan(Math.PI * angle / 180.0);
+
+        for (uint i = 0; i < serviceBMP.w; i++)
+        {
+            serviceBMP.AddYLine(rGB_Pixel.PixelByte(), i, 0, (uint)Math.Round(Math.Abs(i * radian)));
+        }
+
+        File.BinWrite(ref data, File.RenameFile(name, $"AngleLine {angle}"));
     }
 }
