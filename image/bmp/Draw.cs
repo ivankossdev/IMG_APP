@@ -1,36 +1,35 @@
 namespace img_app;
 
-public class Draw : IDraw
+public class Draw : AbsDraw
 {
-    private readonly string name;
-    private byte[] data;
     readonly ShapeBMP serviceBMP;
     readonly RgbPixel rGB_Pixel = new();
 
     public Draw(string Name)
     {
-        name = Name;
+
+        name = Name; 
         data = File.Read(name);
         serviceBMP = new(ref data);
 
     }
-    public void XLines(uint Lenght)
+    public override void XLines(uint Lenght)
     {
         for (uint i = 0; i < serviceBMP.h; i++)
         {
             serviceBMP.AddXLine(rGB_Pixel.PixelByte(), 0, i, Lenght);
         }
-
-        File.BinWrite(ref data, File.RenameFile(name, $"XLine_{Lenght}"));
+        if(data != null && name != null)
+            File.BinWrite(ref data, File.RenameFile(name, $"XLine_{Lenght}"));
     }
-    public void YLines(uint Lenght)
+    public override void YLines(uint Lenght)
     {
         for (uint i = 0; i < serviceBMP.w; i += 2)
             serviceBMP.AddYLine(rGB_Pixel.PixelByte(), i, 0, Lenght);
-
-        File.BinWrite(ref data, File.RenameFile(name, $"YLines_{Lenght}"));
+        if(data != null && name != null)
+            File.BinWrite(ref data, File.RenameFile(name, $"YLines_{Lenght}"));
     }
-    public void AngleLine()
+    public override void AngleLine()
     {
         double angle = MathEx.GetAngle(serviceBMP.w, serviceBMP.h);
         double radian = Math.Tan(Math.PI * angle / 180.0);
@@ -39,8 +38,8 @@ public class Draw : IDraw
         {
             serviceBMP.AddYLine(rGB_Pixel.PixelByte(), i, 0, (uint)Math.Round(Math.Abs(i * radian)));
         }
-
-        File.BinWrite(ref data, File.RenameFile(name, $"AngleLine"));
+        if(data != null && name != null)
+            File.BinWrite(ref data, File.RenameFile(name, $"AngleLine"));
     }
 
     public void AngleLine(double angle)
@@ -51,7 +50,7 @@ public class Draw : IDraw
         {
             serviceBMP.AddYLine(rGB_Pixel.PixelByte(), i, 0, (uint)Math.Round(Math.Abs(i * radian)));
         }
-
-        File.BinWrite(ref data, File.RenameFile(name, $"AngleLine {angle}"));
+        if(data != null && name != null)
+            File.BinWrite(ref data, File.RenameFile(name, $"AngleLine {angle}"));
     }
 }
