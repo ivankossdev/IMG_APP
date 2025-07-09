@@ -1,6 +1,6 @@
 namespace img_app;
 
-class DataInsertsPNG : IDataInserts
+public class DataInsertsPNG : IDataInserts
 {
     public void InsertWord()
     {

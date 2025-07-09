@@ -1,7 +1,7 @@
 using System.Text;
 namespace img_app;
 
-public class ImagePNG
+public class ImagePNG : DataInsertsPNG
 {
     private string _name = "image.png";
     public string Name
@@ -24,6 +24,7 @@ public class ImagePNG
         // 0x89; 0x50; 0x4E; 0x47; 0x0D; 0x0A; 0x1A 0x0A заголовок файла png  
         array[0] = 0x89; array[1] = 0x50; array[2] = 0x4E; array[3] = 0x47;
         array[4] = 0x0D; array[5] = 0x0A; array[6] = 0x1A; array[7] = 0x0A;
+        
         Length(ref array);
         Type(ref array);
         return array;
