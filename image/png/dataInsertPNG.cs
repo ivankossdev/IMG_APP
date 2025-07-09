@@ -1,16 +1,18 @@
 namespace img_app;
 
-public class DataInsertsPNG : IDataInserts
+public class DataInsertsPNG : AbsDataInserts
 {
-    public void InsertWord()
+    public override void InsertWord()
     {
         throw new NotImplementedException();
     }
-    public void InsertPixel()
+    
+    public override void InsertPixel()
     {
         throw new NotImplementedException();
     }
-    public void InsertData()
+
+    public override void InsertData(uint size, ref byte[] array, int startPosition, int stopPosition)
     {
         throw new NotImplementedException();
     }
