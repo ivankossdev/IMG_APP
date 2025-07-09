@@ -2,7 +2,7 @@ namespace img_app;
 
 public class DrawBMP : AbsDraw
 {
-    readonly ShapeBMP serviceBMP;
+    readonly LineBMP serviceBMP;
     readonly RgbPixel rGB_Pixel = new();
 
     public DrawBMP(string Name)
