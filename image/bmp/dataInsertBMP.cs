@@ -1,9 +1,9 @@
 namespace img_app;
 
-class DataInsertsBMP : IDataInserts
+public class DataInsertsBMP : AbsDataInserts
 {
-    public void InsertWord() {
-        throw new Exception("Override method !!!");
+    public override void InsertWord() {
+        throw new NotImplementedException();
     }
     public static void InsertWord(ref byte[] array, uint lenWord, uint count, uint appendBytes, byte[] pixel)
     {
@@ -17,9 +17,9 @@ class DataInsertsBMP : IDataInserts
             array[i + 2] = pixel[2]; // red
         }
     }
-    public void InsertPixel()
+    public override void InsertPixel()
     {
-        throw new Exception("Override method !!!");
+        throw new NotImplementedException();
     }
     public static void InsertPixel(ref byte[] array, byte[] pixel, uint lenWord, uint xPos, uint yPos)
     {
@@ -29,18 +29,6 @@ class DataInsertsBMP : IDataInserts
         array[pixelPos] = pixel[0];     // blue
         array[pixelPos + 1] = pixel[1]; // green
         array[pixelPos + 2] = pixel[2]; // red
-    }
-
-    public void InsertData()
-    {
-        throw new Exception("Override method !!!");
-    }
-    public static void InsertData(uint size, ref byte[] array, int startPosition, int stopPosition)
-    {
-        for (int i = startPosition, i_ = 0; i <= stopPosition; i++, i_++)
-        {
-            array[i] = (byte)((size >> (8 * i_)) & 0xff);
-        }
     }
 
     public static uint GetData(ref byte[] array, int startPosition, int stopPosition)

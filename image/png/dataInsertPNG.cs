@@ -4,14 +4,14 @@ public class DataInsertsPNG : IDataInserts
 {
     public void InsertWord()
     {
-        throw new Exception("Override method !!!");
+        throw new NotImplementedException();
     }
     public void InsertPixel()
     {
-        throw new Exception("Override method !!!");
+        throw new NotImplementedException();
     }
     public void InsertData()
     {
-        throw new Exception("Override method !!!");
+        throw new NotImplementedException();
     }
 }
