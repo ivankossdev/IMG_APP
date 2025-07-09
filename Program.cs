@@ -12,7 +12,7 @@ class Program
         ImageBMP image_BMP = new() { Name = $"image_{w}x{h}" };
         image_BMP.Create(w, h);
 
-        Draw draw = new(image_BMP.Name);
+        DrawBMP draw = new(image_BMP.Name);
         draw.XLines(w);
         draw.YLines(h);
         draw.AngleLine();
