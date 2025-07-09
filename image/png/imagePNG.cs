@@ -9,6 +9,8 @@ public class ImagePNG
         get => _name;
         set => _name = value + ".png";
     }
+
+    private const int lenArray = 2 * 16;
     public void Create(int width, int height)
     {
         byte[] res = HeaderFile(width, height);
@@ -17,50 +19,33 @@ public class ImagePNG
     }
     private byte[] HeaderFile(int width, int height)
     {
-        byte[] array = new byte[100];
+        byte[] array = new byte[lenArray];
 
-        // 0x89 0x50 0x4e 0x47 0x0d 0x0a 0x1a 0x0a заголовок файла png  
-        array[0] = 0x89; array[1] = 0x50; array[2] = 0x4e; array[3] = 0x47;
-        array[4] = 0x0d; array[5] = 0x0a; array[6] = 0x1a; array[7] = 0x0a;
-
-        SetLenghtChunk(ref array, 13);
-        SetWidthImage(ref array, 640);
-        SetHeightImage(ref array, 480);
+        // 0x89; 0x50; 0x4E; 0x47; 0x0D; 0x0A; 0x1A 0x0A заголовок файла png  
+        array[0] = 0x89; array[1] = 0x50; array[2] = 0x4E; array[3] = 0x47;
+        array[4] = 0x0D; array[5] = 0x0A; array[6] = 0x1A; array[7] = 0x0A;
+        Length(ref array);
         Type(ref array);
-
         return array;
     }
-    private void SetLenghtChunk(ref byte[] array, int l)
+    private byte[] Body(ref byte[] array)
     {
-        // Длина array[8 ... 11]
-        array[11] = (byte)l;
-        for (int i = 0, i_ = 11; i < 4; i++, i_--)
-        {
-            System.Console.WriteLine($"{i} {i_}");
-        }
+        
+        return array;
+    }
+
+    private void Length(ref byte[] array)
+    {
+        array[8] = 0x00; array[9] = 0x00; array[10] = 0x00; array[11] = 0x0d;
     }
     private void Type(ref byte[] array)
     {
         // IHDR Заголовок изображения 0x49, 0x48, 0x44, 0x52
         byte[] byteArray = new UTF8Encoding(true).GetBytes("IHDR");
 
-        for (int i = 12, i_ = 0; i < 15; i++, i_++)
+        for (int i = 12, i_ = 0; i < 16; i++, i_++)
         {
             array[i] = byteArray[i_];
         }
-    }
-    private void SetWidthImage(ref byte[] array, int w)
-    {
-        // 4 byte array[16 ... 19] 
-    }
-    private void SetHeightImage(ref byte[] array, int w)
-    {
-        // 4 byte array[20 ... 23]
-    }
-    private byte[] Body(ref byte[] array)
-    {
-        byte[] _array = new byte[100];
-
-        return _array;
     }
 }

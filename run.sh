@@ -5,7 +5,8 @@ if [[ "py" == "$1" ]]
     then
         python3 bmp.py
     else
-        rm example/*.bmp
+        # rm example/*.bmp
+        rm example/*.png
         rm example/*.txt
         rm test_ex/*.txt
         dotnet run app
