@@ -1,4 +1,5 @@
 using System.Text;
+using System.IO.Hashing;
 namespace img_app;
 
 public class ImagePNG : DataInsertsPNG
@@ -40,6 +41,9 @@ public class ImagePNG : DataInsertsPNG
         // 0 метод сжатия, 0 метод фильтрации, метод интерлейсинга
         byte[] type = [8, 6, 0, 0, 0];
         InsertData(ref type, ref array, 24, 28);
+        byte[] chunk = [0x49, 0x48, 0x44, 0x52, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x08, 0x06, 0x00, 0x00, 0x00];
+        string hash = HashHandler.GetCRC32(new Crc32(), chunk);
+        System.Console.WriteLine(hash);
         return array;
     }
     

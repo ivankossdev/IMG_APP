@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using System.IO.Hashing;
 // dotnet add package System.IO.Hashing
 
 namespace img_app;
@@ -8,7 +7,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        const int w = 640, h = 480;
+        const int w = 2, h = 2;
 
         // ImageBMP image_BMP = new() { Name = $"image_{w}x{h}" };
         // image_BMP.Create(w, h);
@@ -24,9 +23,6 @@ class Program
 
         GetFileInfo getFileInfoPng = new() { Name = $"test_ex/ex_2px.png" };
         getFileInfoPng.GetAllByte();
-
-        // string hash = HashHandler.GetCRC32(new Crc32(), [1, 2, 3, 4]);
-        // System.Console.WriteLine(hash);
 
         ImagePNG imagePNG = new() { Name = $"image_{w}x{h}" };
         imagePNG.Create(w, h);
