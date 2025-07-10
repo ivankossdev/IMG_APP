@@ -29,8 +29,8 @@ public class ImagePNG : DataInsertsPNG
         // Размер чанка
         InsertData(0x0d, ref array, 8, 11);
         // IHDR Заголовок изображения 0x49, 0x48, 0x44, 0x52
-        byte[] byteArray = new UTF8Encoding(true).GetBytes("IHDR");
-        InsertData(ref byteArray, ref array, 12, 15);
+        byte[] typeHeader = new UTF8Encoding(true).GetBytes("IHDR");
+        InsertData(ref typeHeader, ref array, 12, 15);
 
         return array;
     }
