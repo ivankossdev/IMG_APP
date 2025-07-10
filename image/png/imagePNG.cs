@@ -35,9 +35,11 @@ public class ImagePNG : DataInsertsPNG
         InsertData((uint)width, ref array, 16, 19);
         // Высота изображения 
         InsertData((uint)height, ref array, 20, 23);
-        // Тип сжатия 
-        byte[] type = [8, 6];
-        InsertData(ref type, ref array, 24, 25);
+        // Тип сжатия 8 битовая глубина, тип цвета 1-палитра 2-цвет 4-альфа канал 
+        // 6 = "2-цвет" + "4-альфа канал"
+        // 0 метод сжатия, 0 метод фильтрации, метод интерлейсинга
+        byte[] type = [8, 6, 0, 0, 0];
+        InsertData(ref type, ref array, 24, 28);
         return array;
     }
     
