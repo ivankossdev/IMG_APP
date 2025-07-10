@@ -17,6 +17,7 @@ public class ImagePNG : DataInsertsPNG
         byte[] body = Body(ref res);
         File.BinWrite(ref body, Name);
     }
+    
     private byte[] HeaderFile(int width, int height)
     {
         byte[] array = new byte[lenArray];
@@ -24,29 +25,18 @@ public class ImagePNG : DataInsertsPNG
         // 0x89; 0x50; 0x4E; 0x47; 0x0D; 0x0A; 0x1A 0x0A заголовок файла png  
         array[0] = 0x89; array[1] = 0x50; array[2] = 0x4E; array[3] = 0x47;
         array[4] = 0x0D; array[5] = 0x0A; array[6] = 0x1A; array[7] = 0x0A;
-        
-        Length(ref array);
-        Type(ref array);
-        return array;
-    }
-    private byte[] Body(ref byte[] array)
-    {
-        
-        return array;
-    }
 
-    private void Length(ref byte[] array)
-    {
-        array[8] = 0x00; array[9] = 0x00; array[10] = 0x00; array[11] = 0x0d;
-    }
-    private void Type(ref byte[] array)
-    {
+        // Размер чанка
+        InsertData(0x0d, ref array, 8, 11);
         // IHDR Заголовок изображения 0x49, 0x48, 0x44, 0x52
         byte[] byteArray = new UTF8Encoding(true).GetBytes("IHDR");
+        InsertData(ref byteArray, ref array, 12, 15);
 
-        for (int i = 12, i_ = 0; i < 16; i++, i_++)
-        {
-            array[i] = byteArray[i_];
-        }
+        return array;
+    }
+    
+    private byte[] Body(ref byte[] array)
+    {
+        return array;
     }
 }

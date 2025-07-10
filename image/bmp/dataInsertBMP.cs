@@ -30,11 +30,11 @@ public class DataInsertsBMP : AbsDataInserts
         array[pixelPos + 1] = pixel[1]; // green
         array[pixelPos + 2] = pixel[2]; // red
     }
-    public override void InsertData(uint size, ref byte[] array, int startPosition, int stopPosition)
+    public override void InsertData(uint data, ref byte[] array, int startPosition, int stopPosition)
     {
         for (int i = startPosition, i_ = 0; i <= stopPosition; i++, i_++)
         {
-            array[i] = (byte)((size >> (8 * i_)) & 0xff);
+            array[i] = (byte)((data >> (8 * i_)) & 0xff);
         }
     }
 
