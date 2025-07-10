@@ -10,7 +10,7 @@ public class ImagePNG : DataInsertsPNG
         set => _name = value + ".png";
     }
 
-    private const int lenArray = 2 * 16;
+    private const int lenArray = 4 * 16;
     public void Create(int width, int height)
     {
         byte[] res = HeaderFile(width, height);
@@ -31,7 +31,13 @@ public class ImagePNG : DataInsertsPNG
         // IHDR Заголовок изображения 0x49, 0x48, 0x44, 0x52
         byte[] typeHeader = new UTF8Encoding(true).GetBytes("IHDR");
         InsertData(ref typeHeader, ref array, 12, 15);
-
+        // Ширина изображения 
+        InsertData((uint)width, ref array, 16, 19);
+        // Высота изображения 
+        InsertData((uint)height, ref array, 20, 23);
+        // Тип сжатия 
+        byte[] type = [8, 6];
+        InsertData(ref type, ref array, 24, 25);
         return array;
     }
     
