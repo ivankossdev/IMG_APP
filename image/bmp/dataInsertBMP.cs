@@ -38,7 +38,7 @@ public class DataInsertsBMP : AbsDataInserts
         }
     }
 
-    public static uint GetData(ref byte[] array, int startPosition, int stopPosition)
+    public override uint GetData(ref byte[] array, int startPosition, int stopPosition)
     {
         uint data = 0;
         for (int i = startPosition, i_ = 0; i <= stopPosition; i++, i_++)

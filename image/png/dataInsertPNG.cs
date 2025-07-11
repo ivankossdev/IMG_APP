@@ -11,6 +11,10 @@ public class DataInsertsPNG : AbsDataInserts
     {
         throw new NotImplementedException();
     }
+    public override uint GetData(ref byte[] array, int startPosition, int stopPosition)
+    {
+        throw new NotImplementedException();
+    }
 
     public override void InsertData(uint data, ref byte[] array, int startPosition, int stopPosition)
     {
