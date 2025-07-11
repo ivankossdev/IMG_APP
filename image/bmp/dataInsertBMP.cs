@@ -21,7 +21,7 @@ public class DataInsertsBMP : AbsDataInserts
     {
         throw new NotImplementedException();
     }
-    public static void InsertPixel(ref byte[] array, byte[] pixel, uint lenWord, uint xPos, uint yPos)
+    public void InsertPixel(ref byte[] array, byte[] pixel, uint lenWord, uint xPos, uint yPos)
     {
         xPos += 54 + xPos * 2;
         uint pixelPos = xPos + lenWord * yPos;
